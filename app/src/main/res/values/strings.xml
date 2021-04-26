@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ComicStrip_Application</string>
+    <string name="create_a_comic_strip">Create A Comic Strip</string>
+    <string name="close_application">Close Application</string>
 </resources>
