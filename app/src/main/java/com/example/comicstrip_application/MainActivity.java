@@ -17,4 +17,7 @@ public class MainActivity extends AppCompatActivity {
         Intent selectTemplateIntent = new Intent(this, Activity_SelectTemplate.class);
         startActivity(selectTemplateIntent);
     }
+    public void CloseApplication(){
+
+    }
 }
