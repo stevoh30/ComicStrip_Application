@@ -3,8 +3,9 @@
     <string name="create_a_comic_strip">Create A Comic Strip</string>
     <string name="close_application">Close Application</string>
     <string name="select_template_3">Select Template 3</string>
-    <string name="select_template_1">Select Template 1111</string>
+    <string name="select_template_1">Select Template 1</string>
     <string name="select_template_2">Select Template 2</string>
     <string name="select_template_4">Select Template 4</string>
     <string name="select_a_template_to_begin">Select a Template to Begin:</string>
+    <string name="todo">TODO</string>
 </resources>
