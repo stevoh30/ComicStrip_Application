@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activity_Template1">
 
+    <!-- scale type fitXY (auto sizes to fit image by stretching -->
     <ImageView
         android:id="@+id/imageViewPhoto3"
+        android:scaleType="fitXY"
         android:layout_width="239dp"
         android:layout_height="185dp"
         android:layout_marginBottom="64dp"
@@ -20,6 +22,7 @@
 
     <ImageView
         android:id="@+id/imageViewPhoto1"
+        android:scaleType="fitXY"
         android:layout_width="239dp"
         android:layout_height="185dp"
         android:layout_marginTop="80dp"
@@ -35,6 +38,7 @@
 
     <ImageView
         android:id="@+id/imageViewPhoto2"
+        android:scaleType="fitXY"
         android:layout_width="239dp"
         android:layout_height="185dp"
         android:layout_marginBottom="8dp"
