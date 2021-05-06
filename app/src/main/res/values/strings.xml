@@ -8,4 +8,13 @@
     <string name="select_template_4">Select Template 4</string>
     <string name="select_a_template_to_begin">Select a Template to Begin:</string>
     <string name="todo">TODO</string>
+
+    <string-array name="image_options">
+        <item>Choose photo from gallery</item>
+        <item>Take picture with camera</item>
+    </string-array>
+
+    <string name="alert_dialog_title">Select Image Option</string>
+    <string name="dialog_img_options">choose</string>
+    <string name="dialog_image_options">Select Image Option</string>
 </resources>

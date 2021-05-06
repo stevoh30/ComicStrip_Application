@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComicStrip_Application">
-        <activity android:name=".Activity_Template1"></activity>
+        <activity android:name=".Activity_Template1"/>
         <activity android:name=".Activity_SelectTemplate" />
         <activity android:name=".MainActivity">
             <intent-filter>
