@@ -7,13 +7,14 @@
     tools:context=".Activity_Template1">
 
     <!-- scale type fitXY (auto sizes to fit image by stretching -->
+
     <ImageView
         android:id="@+id/imageViewPhoto3"
-        android:scaleType="fitXY"
         android:layout_width="239dp"
         android:layout_height="185dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="28dp"
         android:contentDescription="@string/todo"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
@@ -22,12 +23,12 @@
 
     <ImageView
         android:id="@+id/imageViewPhoto1"
-        android:scaleType="fitXY"
         android:layout_width="239dp"
         android:layout_height="185dp"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/todo"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageViewPhoto2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
