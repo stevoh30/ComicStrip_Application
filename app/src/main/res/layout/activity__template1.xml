@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_Template1">
+    tools:context=".Activity_Template1"
+    android:id="@+id/myLayout">
 
     <!-- scale type fitXY (auto sizes to fit image by stretching -->
 
@@ -49,5 +50,17 @@
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/blank_image2" />
+
+    <Button
+        android:id="@+id/btnCreateText"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:text="Create Text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

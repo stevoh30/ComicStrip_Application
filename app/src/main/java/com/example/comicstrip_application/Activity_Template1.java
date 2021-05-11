@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -13,12 +14,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,6 +32,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //declare variables
     private ImageView imageView1, imageView2, imageView3;
+    private Button btnCreateTxt;
     byte imageViewSelector = 0;
 
     // Request code gallery
@@ -43,7 +50,24 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView1 = findViewById(R.id.imageViewPhoto1);
         imageView2 = findViewById(R.id.imageViewPhoto2);
         imageView3 = findViewById(R.id.imageViewPhoto3);
+        btnCreateTxt = findViewById(R.id.btnCreateText);
+        ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
+
+        // create text when button is pressed
+        btnCreateTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView tv = new TextView(Activity_Template1.this);
+                tv.setText("This is generated text");
+                tv.setTextSize(18);
+                tv.setTextColor(Color.BLACK);
+                tv.setClickable(true);
+                tv.setPadding(0, 10, 0, 0);
+                tv.setGravity(Gravity.CENTER);
+                layout.addView(tv);
+            }
+        });
 
         // create onClick functionality for imageviews to operate as buttons
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +95,8 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
     }
+
+    // create image dialog box, allowing user to choose between gallery and taking photo
     private void showImageOptionDialog(){
         final String[] options = getResources().getStringArray(R.array.image_options);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
