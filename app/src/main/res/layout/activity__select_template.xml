@@ -24,6 +24,7 @@
         android:layout_width="255dp"
         android:layout_height="54dp"
         android:layout_marginBottom="20dp"
+        android:onClick="OpenTemplate2"
         android:text="@string/select_template_2"
         app:layout_constraintBottom_toTopOf="@+id/btnSelectTemp3"
         app:layout_constraintEnd_toEndOf="parent"

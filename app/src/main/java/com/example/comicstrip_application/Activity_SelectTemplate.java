@@ -17,4 +17,9 @@ public class Activity_SelectTemplate extends AppCompatActivity {
         Intent template1Intent = new Intent(this, Activity_Template1.class);
         startActivity(template1Intent);
     }
+    public void OpenTemplate2(View v){
+        Intent template2Intent = new Intent(this, Activity_Template2.class);
+        startActivity(template2Intent);
+    }
+
 }

@@ -9,23 +9,34 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class Activity_Template1 extends AppCompatActivity {
@@ -41,6 +52,9 @@ public class Activity_Template1 extends AppCompatActivity {
     private static final int GALLERY_REQUEST = 9;
     private static final int CAMERA_REQUEST = 11;
     private Context context;
+    private String m_Text = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,18 +68,75 @@ public class Activity_Template1 extends AppCompatActivity {
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
-        // create text when button is pressed
+
         btnCreateTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView tv = new TextView(Activity_Template1.this);
-                tv.setText("This is generated text");
-                tv.setTextSize(18);
-                tv.setTextColor(Color.BLACK);
-                tv.setClickable(true);
-                tv.setPadding(0, 10, 0, 0);
-                tv.setGravity(Gravity.CENTER);
-                layout.addView(tv);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Insert your text here:");
+
+                // Set up the input
+                final EditText input = new EditText(context);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+                // Set up the buttons
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                        TextView tv = new TextView(Activity_Template1.this);
+                        tv.setText(m_Text);
+                        tv.setTextSize(18);
+                        tv.setTextColor(Color.BLACK);
+                        tv.setClickable(true);
+                        tv.setPadding(20, 10, 0, 0);
+                        tv.setGravity(Gravity.CENTER);
+
+                        tv.setOnTouchListener(new View.OnTouchListener(){
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                float xDown =0, yDown=0;
+                                switch(motionEvent.getActionMasked()){
+                                    //user pressed down on object
+                                    case MotionEvent.ACTION_DOWN:
+                                        xDown = motionEvent.getX();
+                                        yDown = motionEvent.getY();
+                                        break;
+                                    //user moves object
+                                    case MotionEvent.ACTION_MOVE:
+                                        float movedX, movedY;
+                                        movedX = motionEvent.getX();
+                                        movedY = motionEvent.getY();
+
+                                        //calculates distance from down to move
+                                        float distanceX = movedX - xDown;
+                                        float distanceY = movedY - yDown;
+
+                                        //move view to position
+                                        tv.setX(tv.getX()+distanceX);
+                                        tv.setY(tv.getY()+distanceY);
+
+                                        //set values for next move
+                                        xDown=movedX;
+                                        yDown=movedY;
+
+                                        break;
+                                }
+                                return false;
+                            }
+                        });
+                        layout.addView(tv);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
             }
         });
 
@@ -125,11 +196,9 @@ public class Activity_Template1 extends AppCompatActivity {
                                          */
                                         Toast.makeText(Activity_Template1.this,"grant it this permission will allow you to access storage from this app", Toast.LENGTH_LONG).show();
                                     }
-
                                     /**
                                      * permission is not already granted. request it
                                      */
-
                                     //request it
                                     ActivityCompat.requestPermissions(Activity_Template1.this,
                                             new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
@@ -167,7 +236,6 @@ public class Activity_Template1 extends AppCompatActivity {
                                             new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                                             REQUEST_STORAGE2_CODE);
                                 }
-
                                 break;
                         }
                     }
