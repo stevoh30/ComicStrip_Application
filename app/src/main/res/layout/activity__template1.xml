@@ -53,14 +53,28 @@
 
     <Button
         android:id="@+id/btnCreateText"
-        android:layout_width="54dp"
-        android:layout_height="48dp"
+        android:layout_width="70dp"
+        android:layout_height="58dp"
         android:text="Create Text"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.142" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="70dp"
+        android:layout_height="58dp"
+        android:text="Delete text"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

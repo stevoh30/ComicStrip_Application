@@ -43,7 +43,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //declare variables
     private ImageView imageView1, imageView2, imageView3;
-    private Button btnCreateTxt;
+    private Button btnCreateTxt, btnDeleteTxt;
     byte imageViewSelector = 0;
 
     // Request code gallery
@@ -53,7 +53,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 11;
     private Context context;
     private String m_Text = "";
-
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,7 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView2 = findViewById(R.id.imageViewPhoto2);
         imageView3 = findViewById(R.id.imageViewPhoto3);
         btnCreateTxt = findViewById(R.id.btnCreateText);
+        btnDeleteTxt = findViewById(R.id.btnDelete);
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
@@ -86,13 +87,14 @@ public class Activity_Template1 extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
-                        TextView tv = new TextView(Activity_Template1.this);
+                        tv = new TextView(Activity_Template1.this);
                         tv.setText(m_Text);
                         tv.setTextSize(18);
                         tv.setTextColor(Color.BLACK);
                         tv.setClickable(true);
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
+                        //tv.setVisibility(View.INVISIBLE);
 
                         tv.setOnTouchListener(new View.OnTouchListener(){
                             @Override
@@ -139,6 +141,13 @@ public class Activity_Template1 extends AppCompatActivity {
                 builder.show();
             }
         });
+       btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View v) {
+            tv.setText("");
+
+            }
+       });
 
         // create onClick functionality for imageviews to operate as buttons
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -244,6 +253,7 @@ public class Activity_Template1 extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     // Permissions
     //callback from the requestPermissions dialog ===============================================
     @Override
