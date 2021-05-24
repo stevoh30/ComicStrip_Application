@@ -42,7 +42,8 @@ import org.w3c.dom.Text;
 public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
-    private ImageView imageView1, imageView2, imageView3;
+    private ImageView imageView1, imageView2, imageView3,
+            imageViewCreateText, imageViewCreateBubble;
     private Button btnCreateTxt, btnDeleteTxt;
     byte imageViewSelector = 0;
     private Context context;
@@ -57,6 +58,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 11;
 
     private TextView tv;
+    int image_ID = 0;
 
 
     @Override
@@ -68,13 +70,14 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView1 = findViewById(R.id.imageViewPhoto1);
         imageView2 = findViewById(R.id.imageViewPhoto2);
         imageView3 = findViewById(R.id.imageViewPhoto3);
-        btnCreateTxt = findViewById(R.id.btnCreateText);
+        imageViewCreateText = findViewById(R.id.imgCreateText);
+        imageViewCreateBubble = findViewById(R.id.imgCreateBubble);
         btnDeleteTxt = findViewById(R.id.btnDelete);
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
 
-        btnCreateTxt.setOnClickListener(new View.OnClickListener() {
+        imageViewCreateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -101,7 +104,6 @@ public class Activity_Template1 extends AppCompatActivity {
                         tv.setClickable(true);
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
-
                         tv.setOnTouchListener(new MyTouchListener());
 
                         layout.addView(tv);
@@ -114,6 +116,20 @@ public class Activity_Template1 extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+        // Creates dialogimage with click of button
+        imageViewCreateBubble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(getApplicationContext());
+                image.setImageResource(R.drawable.dialogbox);
+                //increments id for every image created
+                image.setId(++image_ID);
+                //image.set
+                //adds ontouchlistener event for dragging object
+                image.setOnTouchListener(new MyTouchListener());
+                layout.addView(image);
             }
         });
        btnDeleteTxt.setOnClickListener(new View.OnClickListener() {

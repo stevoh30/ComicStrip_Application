@@ -10,6 +10,19 @@
     <!-- scale type fitXY (auto sizes to fit image by stretching -->
 
     <ImageView
+        android:id="@+id/imgCreateBubble"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCreateText"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/generatebubble_icon" />
+
+    <ImageView
         android:id="@+id/imageViewPhoto3"
         android:layout_width="239dp"
         android:layout_height="185dp"
@@ -52,19 +65,6 @@
         app:srcCompat="@drawable/blank_image2" />
 
     <Button
-        android:id="@+id/btnCreateText"
-        android:layout_width="70dp"
-        android:layout_height="58dp"
-        android:text="Create Text"
-        android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
-
-    <Button
         android:id="@+id/btnDelete"
         android:layout_width="70dp"
         android:layout_height="58dp"
@@ -72,9 +72,21 @@
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.976" />
+
+    <ImageView
+        android:id="@+id/imgCreateText"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/generatetext_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
