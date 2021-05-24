@@ -41,19 +41,20 @@ import org.w3c.dom.Text;
 
 public class Activity_Template1 extends AppCompatActivity {
 
-    //declare variables
+    //Declare variables
     private ImageView imageView1, imageView2, imageView3;
     private Button btnCreateTxt;
     byte imageViewSelector = 0;
+    private Context context;
+    private String m_Text = "";
+    private Boolean delete = false;
+
 
     // Request code gallery
     public static final int REQUEST_STORAGE_CODE = 1;
     public static final int REQUEST_STORAGE2_CODE = 3;
     private static final int GALLERY_REQUEST = 9;
     private static final int CAMERA_REQUEST = 11;
-    private Context context;
-    private String m_Text = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +83,12 @@ public class Activity_Template1 extends AppCompatActivity {
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
                 // Set up the buttons
+                //builder.setOnItemSelectedListener()
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        //create textview object using input dialog value
                         m_Text = input.getText().toString();
                         TextView tv = new TextView(Activity_Template1.this);
                         tv.setText(m_Text);
@@ -93,40 +97,41 @@ public class Activity_Template1 extends AppCompatActivity {
                         tv.setClickable(true);
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
-
-                        tv.setOnTouchListener(new View.OnTouchListener(){
-                            @Override
-                            public boolean onTouch(View view, MotionEvent motionEvent) {
-                                float xDown =0, yDown=0;
-                                switch(motionEvent.getActionMasked()){
-                                    //user pressed down on object
-                                    case MotionEvent.ACTION_DOWN:
-                                        xDown = motionEvent.getX();
-                                        yDown = motionEvent.getY();
-                                        break;
-                                    //user moves object
-                                    case MotionEvent.ACTION_MOVE:
-                                        float movedX, movedY;
-                                        movedX = motionEvent.getX();
-                                        movedY = motionEvent.getY();
-
-                                        //calculates distance from down to move
-                                        float distanceX = movedX - xDown;
-                                        float distanceY = movedY - yDown;
-
-                                        //move view to position
-                                        tv.setX(tv.getX()+distanceX);
-                                        tv.setY(tv.getY()+distanceY);
-
-                                        //set values for next move
-                                        xDown=movedX;
-                                        yDown=movedY;
-
-                                        break;
-                                }
-                                return false;
-                            }
-                        });
+                        tv.setOnTouchListener(new MyTouchListener());
+                        //add touchListener to textview, allowing for drag functionality
+//                        tv.setOnTouchListener(new View.OnTouchListener(){
+//                            @Override
+//                            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                                float xDown =0, yDown=0;
+//                                switch(motionEvent.getActionMasked()){
+//                                    //user pressed down on object
+//                                    case MotionEvent.ACTION_DOWN:
+//                                        xDown = motionEvent.getX();
+//                                        yDown = motionEvent.getY();
+//                                        break;
+//                                    //user moves object
+//                                    case MotionEvent.ACTION_MOVE:
+//                                        float movedX, movedY;
+//                                        movedX = motionEvent.getX();
+//                                        movedY = motionEvent.getY();
+//
+//                                        //calculates distance from down to move
+//                                        float distanceX = movedX - xDown;
+//                                        float distanceY = movedY - yDown;
+//
+//                                        //move view to position
+//                                        view.setX(view.getX()+distanceX);
+//                                        view.setY(view.getY()+distanceY);
+//
+//                                        //set values for next move
+//                                        xDown=movedX;
+//                                        yDown=movedY;
+//
+//                                        break;
+//                                }
+//                                return false;
+//                            }
+//                        });
                         layout.addView(tv);
                     }
                 });
@@ -165,6 +170,10 @@ public class Activity_Template1 extends AppCompatActivity {
                 showImageOptionDialog();
             }
         });
+    }
+    private void removeSelectedObject(){
+        //when clicked, user selects object which is removed from the layout
+
     }
 
     // create image dialog box, allowing user to choose between gallery and taking photo
@@ -333,5 +342,38 @@ public class Activity_Template1 extends AppCompatActivity {
                     break;
             }
         }
+    }
+}
+class MyTouchListener implements View.OnTouchListener {
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        float xDown =0, yDown=0;
+        switch(motionEvent.getActionMasked()){
+            //user pressed down on object
+            case MotionEvent.ACTION_DOWN:
+                xDown = motionEvent.getX();
+                yDown = motionEvent.getY();
+                break;
+            //user moves object
+            case MotionEvent.ACTION_MOVE:
+                float movedX, movedY;
+                movedX = motionEvent.getX();
+                movedY = motionEvent.getY();
+
+                //calculates distance from down to move
+                float distanceX = movedX - xDown;
+                float distanceY = movedY - yDown;
+
+                //move view to position
+                view.setX(view.getX()+distanceX);
+                view.setY(view.getY()+distanceY);
+
+                //set values for next move
+                xDown=movedX;
+                yDown=movedY;
+
+                break;
+        }
+        return false;
     }
 }
