@@ -123,9 +123,10 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ImageView image = new ImageView(getApplicationContext());
-                image.setImageResource(R.drawable.dialogbox);
+                image.setImageResource(R.drawable.dialog_box2);
                 //increments id for every image created
                 image.setId(++image_ID);
+                image.setClickable(true);
                 //image.set
                 //adds ontouchlistener event for dragging object
                 image.setOnTouchListener(new MyTouchListener());
