@@ -43,7 +43,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
     private ImageView imageView1, imageView2, imageView3;
-    private Button btnCreateTxt;
+    private Button btnCreateTxt, btnDeleteTxt;
     byte imageViewSelector = 0;
     private Context context;
     private String m_Text = "";
@@ -56,6 +56,9 @@ public class Activity_Template1 extends AppCompatActivity {
     private static final int GALLERY_REQUEST = 9;
     private static final int CAMERA_REQUEST = 11;
 
+    private TextView tv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +69,7 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView2 = findViewById(R.id.imageViewPhoto2);
         imageView3 = findViewById(R.id.imageViewPhoto3);
         btnCreateTxt = findViewById(R.id.btnCreateText);
+        btnDeleteTxt = findViewById(R.id.btnDelete);
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
@@ -90,48 +94,16 @@ public class Activity_Template1 extends AppCompatActivity {
 
                         //create textview object using input dialog value
                         m_Text = input.getText().toString();
-                        TextView tv = new TextView(Activity_Template1.this);
+                        tv = new TextView(Activity_Template1.this);
                         tv.setText(m_Text);
                         tv.setTextSize(18);
                         tv.setTextColor(Color.BLACK);
                         tv.setClickable(true);
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
+
                         tv.setOnTouchListener(new MyTouchListener());
-                        //add touchListener to textview, allowing for drag functionality
-//                        tv.setOnTouchListener(new View.OnTouchListener(){
-//                            @Override
-//                            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                                float xDown =0, yDown=0;
-//                                switch(motionEvent.getActionMasked()){
-//                                    //user pressed down on object
-//                                    case MotionEvent.ACTION_DOWN:
-//                                        xDown = motionEvent.getX();
-//                                        yDown = motionEvent.getY();
-//                                        break;
-//                                    //user moves object
-//                                    case MotionEvent.ACTION_MOVE:
-//                                        float movedX, movedY;
-//                                        movedX = motionEvent.getX();
-//                                        movedY = motionEvent.getY();
-//
-//                                        //calculates distance from down to move
-//                                        float distanceX = movedX - xDown;
-//                                        float distanceY = movedY - yDown;
-//
-//                                        //move view to position
-//                                        view.setX(view.getX()+distanceX);
-//                                        view.setY(view.getY()+distanceY);
-//
-//                                        //set values for next move
-//                                        xDown=movedX;
-//                                        yDown=movedY;
-//
-//                                        break;
-//                                }
-//                                return false;
-//                            }
-//                        });
+
                         layout.addView(tv);
                     }
                 });
@@ -144,6 +116,13 @@ public class Activity_Template1 extends AppCompatActivity {
                 builder.show();
             }
         });
+       btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View v) {
+            tv.setText("");
+
+            }
+       });
 
         // create onClick functionality for imageviews to operate as buttons
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -253,6 +232,7 @@ public class Activity_Template1 extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     // Permissions
     //callback from the requestPermissions dialog ===============================================
     @Override
