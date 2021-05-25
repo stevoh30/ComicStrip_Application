@@ -17,7 +17,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,11 +46,13 @@ public class Activity_Template1 extends AppCompatActivity {
     //Declare variables
     private ImageView imageView1, imageView2, imageView3,
             imageViewCreateText, imageViewCreateBubble;
-    private Button btnCreateTxt, btnDeleteTxt;
+    private Button btnFlip, btnDeleteTxt;
     byte imageViewSelector = 0;
     private Context context;
     private String m_Text = "";
     private Boolean delete = false;
+    private Boolean flip = false;
+    private Boolean flipped = false;
 
 
     // Request code gallery
@@ -59,6 +63,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     private TextView tv;
     int image_ID = 0;
+
 
 
     @Override
@@ -73,6 +78,7 @@ public class Activity_Template1 extends AppCompatActivity {
         imageViewCreateText = findViewById(R.id.imgCreateText);
         imageViewCreateBubble = findViewById(R.id.imgCreateBubble);
         btnDeleteTxt = findViewById(R.id.btnDelete);
+        btnFlip = findViewById(R.id.btnFlipImage);
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
@@ -105,6 +111,15 @@ public class Activity_Template1 extends AppCompatActivity {
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
                         tv.setOnTouchListener(new MyTouchListener());
+                        tv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if(delete == true){
+                                    layout.removeView(view);
+                                    delete = false;
+                                }
+                            }
+                        });
 
                         layout.addView(tv);
                     }
@@ -130,16 +145,37 @@ public class Activity_Template1 extends AppCompatActivity {
                 //image.set
                 //adds ontouchlistener event for dragging object
                 image.setOnTouchListener(new MyTouchListener());
+                /* add clickListener that allows object to be deleted */
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(delete == true){
+                            layout.removeView(view);
+                            delete = false;
+                        }
+                        if(flip == true){
+                            image.setImageBitmap(flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+                            flip = false;
+                        }
+                    }
+                });
                 layout.addView(image);
             }
         });
        btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-            tv.setText("");
-
+                //when clicked, user selects object which is removed from the layout
+                delete = true;
             }
        });
+       btnFlip.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               flip = true;
+           }
+        });
+
 
         // create onClick functionality for imageviews to operate as buttons
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -167,8 +203,15 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
     }
-    private void removeSelectedObject(){
-        //when clicked, user selects object which is removed from the layout
+    private Bitmap flipImage(Bitmap image_bitmap) {
+
+        // create new matrix for transformation
+        Matrix matrix = new Matrix();
+        matrix.preScale(-1.0f, 1.0f);
+
+        Bitmap flipped_bitmap = Bitmap.createBitmap(image_bitmap, 0, 0, image_bitmap.getWidth(), image_bitmap.getHeight(), matrix, true);
+
+        return flipped_bitmap;
 
     }
 
@@ -340,6 +383,7 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         }
     }
+
 }
 class MyTouchListener implements View.OnTouchListener {
     @Override
