@@ -71,22 +71,22 @@ public class Activity_Template2 extends AppCompatActivity {
 
     }
 }
-class MyTouchListener1 implements View.OnTouchListener {
-    //creates shadowbox when dragging object
-    @Override
-    public boolean onTouch(View v, MotionEvent e) {
-
-        switch (e.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                v.startDrag(null, shadowBuilder, v, 0);
-                v.setVisibility((v.INVISIBLE));
-                return true;
-        }
-        return false;
-    }
-}
+//class MyTouchListener1 implements View.OnTouchListener {
+//    //creates shadowbox when dragging object
+//    @Override
+//    public boolean onTouch(View v, MotionEvent e) {
+//
+//        switch (e.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//
+//                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+//                v.startDrag(null, shadowBuilder, v, 0);
+//                v.setVisibility((v.INVISIBLE));
+//                return true;
+//        }
+//        return false;
+//    }
+//}
 //creates coordinates for targeted drop for object upon release click
 class MyDragListener1 implements View.OnDragListener {
     private static final String msg = "Works";

@@ -9,6 +9,18 @@
 
     <!-- scale type fitXY (auto sizes to fit image by stretching -->
 
+    <Button
+        android:id="@+id/btnMinimize"
+        android:layout_width="65dp"
+        android:layout_height="54dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685" />
+
     <ImageView
         android:id="@+id/imgCreateBubble"
         android:layout_width="54dp"
@@ -101,5 +113,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.876" />
+
+    <Button
+        android:id="@+id/btnLarge"
+        android:layout_width="65dp"
+        android:layout_height="54dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

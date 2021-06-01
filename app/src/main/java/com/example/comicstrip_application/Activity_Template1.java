@@ -46,13 +46,16 @@ public class Activity_Template1 extends AppCompatActivity {
     //Declare variables
     private ImageView imageView1, imageView2, imageView3,
             imageViewCreateText, imageViewCreateBubble;
-    private Button btnFlip, btnDeleteTxt;
+    private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize;
     byte imageViewSelector = 0;
     private Context context;
     private String m_Text = "";
     private Boolean delete = false;
     private Boolean flip = false;
-    private Boolean flipped = false;
+    private Boolean maximize = false;
+    private Boolean minimize = false;
+
+    Float scalingFactor = 0.75f; // scale down variable
 
 
     // Request code gallery
@@ -63,6 +66,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     private TextView tv;
     int image_ID = 0;
+    int tv_ID = 1000;
 
 
 
@@ -79,6 +83,8 @@ public class Activity_Template1 extends AppCompatActivity {
         imageViewCreateBubble = findViewById(R.id.imgCreateBubble);
         btnDeleteTxt = findViewById(R.id.btnDelete);
         btnFlip = findViewById(R.id.btnFlipImage);
+        btnMaximize = findViewById(R.id.btnLarge);
+        btnMinimize = findViewById(R.id.btnMinimize);
         ConstraintLayout layout = findViewById(R.id.myLayout);
         context = this;
 
@@ -104,19 +110,28 @@ public class Activity_Template1 extends AppCompatActivity {
                         //create textview object using input dialog value
                         m_Text = input.getText().toString();
                         tv = new TextView(Activity_Template1.this);
+                        tv.setId(--tv_ID);
                         tv.setText(m_Text);
                         tv.setTextSize(18);
                         tv.setTextColor(Color.BLACK);
                         tv.setClickable(true);
                         tv.setPadding(20, 10, 0, 0);
                         tv.setGravity(Gravity.CENTER);
-                        tv.setOnTouchListener(new MyTouchListener());
+                        tv.setOnTouchListener(new MyTouchListener1());
                         tv.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if(delete == true){
                                     layout.removeView(view);
                                     delete = false;
+                                }
+                                if(maximize == true){
+                                    tv.setScaleX(tv.getScaleX()+.075f);
+                                    tv.setScaleY(tv.getScaleY()+.075f);
+                                }
+                                if(minimize == true){
+                                    tv.setScaleX(tv.getScaleX()-.075f);
+                                    tv.setScaleY(tv.getScaleY()-.075f);
                                 }
                             }
                         });
@@ -144,7 +159,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setClickable(true);
                 //image.set
                 //adds ontouchlistener event for dragging object
-                image.setOnTouchListener(new MyTouchListener());
+                image.setOnTouchListener(new MyTouchListener1());
                 /* add clickListener that allows object to be deleted */
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -153,9 +168,19 @@ public class Activity_Template1 extends AppCompatActivity {
                             layout.removeView(view);
                             delete = false;
                         }
+                        //if btnFlip has been pressed, then flip image after click
                         if(flip == true){
-                            image.setImageBitmap(flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+                            image.setImageBitmap
+                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
                             flip = false;
+                        }
+                        if(maximize == true){
+                            image.setScaleX(image.getScaleX()+.075f);
+                            image.setScaleY(image.getScaleY()+.075f);
+                        }
+                        if(minimize == true){
+                            image.setScaleX(image.getScaleX()-.075f);
+                            image.setScaleY(image.getScaleY()-.075f);
                         }
                     }
                 });
@@ -173,9 +198,40 @@ public class Activity_Template1 extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                flip = true;
+               ResetMaximimizeProperties();
+               ResetMinimizeProperties();
+
            }
         });
-
+       btnMaximize.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if(maximize == false){
+                   ResetMinimizeProperties();
+                   maximize = true;
+                   btnMaximize.setBackgroundColor(Color.RED);
+               }
+               else {
+                   ResetMaximimizeProperties();
+               }
+           }
+       });
+        btnMinimize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(minimize == false){
+                    //toggle maximize off
+                    //set maximize background color back to blue
+                    ResetMaximimizeProperties();
+                    //toggles minimize on and background color to red
+                    minimize = true;
+                    btnMinimize.setBackgroundColor(Color.RED);
+                }
+                else {
+                    ResetMinimizeProperties();
+                }
+            }
+        });
 
         // create onClick functionality for imageviews to operate as buttons
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -203,16 +259,28 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
     }
+    // methods that reset the maximize and minimize properties and
+    // change button colors back to default
+    public void ResetMinimizeProperties(){
+        minimize = false;
+        btnMinimize.setBackgroundColor(Color.BLUE);
+    }
+    public void ResetMaximimizeProperties(){
+        maximize = false;
+        btnMaximize.setBackgroundColor(Color.BLUE);
+    }
+    // method that allows for imageviews to be flipped horizontally
     private Bitmap flipImage(Bitmap image_bitmap) {
 
         // create new matrix for transformation
         Matrix matrix = new Matrix();
         matrix.preScale(-1.0f, 1.0f);
 
-        Bitmap flipped_bitmap = Bitmap.createBitmap(image_bitmap, 0, 0, image_bitmap.getWidth(), image_bitmap.getHeight(), matrix, true);
+        Bitmap flipped_bitmap =
+                Bitmap.createBitmap
+                        (image_bitmap, 0, 0, image_bitmap.getWidth(), image_bitmap.getHeight(), matrix, true);
 
         return flipped_bitmap;
-
     }
 
     // create image dialog box, allowing user to choose between gallery and taking photo
@@ -382,39 +450,5 @@ public class Activity_Template1 extends AppCompatActivity {
                     break;
             }
         }
-    }
-
-}
-class MyTouchListener implements View.OnTouchListener {
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        float xDown =0, yDown=0;
-        switch(motionEvent.getActionMasked()){
-            //user pressed down on object
-            case MotionEvent.ACTION_DOWN:
-                xDown = motionEvent.getX();
-                yDown = motionEvent.getY();
-                break;
-            //user moves object
-            case MotionEvent.ACTION_MOVE:
-                float movedX, movedY;
-                movedX = motionEvent.getX();
-                movedY = motionEvent.getY();
-
-                //calculates distance from down to move
-                float distanceX = movedX - xDown;
-                float distanceY = movedY - yDown;
-
-                //move view to position
-                view.setX(view.getX()+distanceX);
-                view.setY(view.getY()+distanceY);
-
-                //set values for next move
-                xDown=movedX;
-                yDown=movedY;
-
-                break;
-        }
-        return false;
     }
 }
