@@ -48,7 +48,8 @@
         android:text="@string/select_template_3"
         app:layout_constraintBottom_toTopOf="@+id/btnSelectTemp4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="OpenTemplate3"/>
 
     <TextView
         android:id="@+id/textView"
