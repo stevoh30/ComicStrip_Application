@@ -30,10 +30,10 @@ public class Activity_Template2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__template2);
 
-        Button btn = findViewById(R.id.btnPractice);
+       // Button btn = findViewById(R.id.btnPractice);
 
-        findViewById(R.id.btnPractice).setOnTouchListener(new MyTouchListener1());
-        findViewById(R.id.btnPractice).setOnDragListener(new MyDragListener1());
+        //findViewById(R.id.btnPractice).setOnTouchListener(new MyTouchListener1());
+        //findViewById(R.id.btnPractice).setOnDragListener(new MyDragListener1());
 //        btn.setOnTouchListener(new View.OnTouchListener(){
 //            @Override
 //            public boolean onTouch(View view, MotionEvent motionEvent) {
