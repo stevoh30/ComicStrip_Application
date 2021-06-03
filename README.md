@@ -2,4 +2,4 @@
 
 Capstone Project for Bachelors Degree in Application Development at Renton Technical College. 
 
-This will be a mobile application for android devices that allows the user to select pictures from their personal photo gallery and input them into a selected comic strip template. The user can add dialogue boxes and text through a user-interface, allowing for the creation of personal stories. Created comics can either be saved in photo gallery or submitted on Instagram account. 
+Mobile application for android devices that allows the user to select pictures from their personal gallery and input them into a selected comic strip template. The user will have a number of tools to work with, such as adding dialogue boxes, text and graphics through an interface to create their comic; with the option capture it to their gallery.
