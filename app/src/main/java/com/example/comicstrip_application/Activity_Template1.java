@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -20,6 +21,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,8 +47,9 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
     private ImageView imageView1, imageView2, imageView3,
-            imageViewCreateText, imageViewCreateBubble;
+            imageViewCreateText, imageViewCreateBubble2;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize;
+    private Dialog dialog;
     byte imageViewSelector = 0;
     private Context context;
     private String m_Text = "";
@@ -54,6 +57,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean flip = false;
     private Boolean maximize = false;
     private Boolean minimize = false;
+    ConstraintLayout layout;
 
     Float scalingFactor = 0.75f; // scale down variable
 
@@ -69,7 +73,6 @@ public class Activity_Template1 extends AppCompatActivity {
     int tv_ID = 1000;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,13 +83,14 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView2 = findViewById(R.id.imageViewPhoto2);
         imageView3 = findViewById(R.id.imageViewPhoto3);
         imageViewCreateText = findViewById(R.id.imgCreateText);
-        imageViewCreateBubble = findViewById(R.id.imgCreateBubble);
+        imageViewCreateBubble2 = findViewById(R.id.imgCreateBubble2);
         btnDeleteTxt = findViewById(R.id.btnDelete);
         btnFlip = findViewById(R.id.btnFlipImage);
         btnMaximize = findViewById(R.id.btnLarge);
         btnMinimize = findViewById(R.id.btnMinimize);
-        ConstraintLayout layout = findViewById(R.id.myLayout);
+        layout = findViewById(R.id.myLayout);
         context = this;
+        dialog = new Dialog(this);
 
 
         imageViewCreateText.setOnClickListener(new View.OnClickListener() {
@@ -148,43 +152,10 @@ public class Activity_Template1 extends AppCompatActivity {
                 builder.show();
             }
         });
-        // Creates dialogimage with click of button
-        imageViewCreateBubble.setOnClickListener(new View.OnClickListener() {
+        imageViewCreateBubble2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageView image = new ImageView(getApplicationContext());
-                image.setImageResource(R.drawable.dialog_box2);
-                //increments id for every image created
-                image.setId(++image_ID);
-                image.setClickable(true);
-                //image.set
-                //adds ontouchlistener event for dragging object
-                image.setOnTouchListener(new MyTouchListener1());
-                /* add clickListener that allows object to be deleted */
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(delete == true){
-                            layout.removeView(view);
-                            delete = false;
-                        }
-                        //if btnFlip has been pressed, then flip image after click
-                        if(flip == true){
-                            image.setImageBitmap
-                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
-                            flip = false;
-                        }
-                        if(maximize == true){
-                            image.setScaleX(image.getScaleX()+.075f);
-                            image.setScaleY(image.getScaleY()+.075f);
-                        }
-                        if(minimize == true){
-                            image.setScaleX(image.getScaleX()-.075f);
-                            image.setScaleY(image.getScaleY()-.075f);
-                        }
-                    }
-                });
-                layout.addView(image);
+                OpenCreateDialogOptions();
             }
         });
        btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
@@ -258,6 +229,132 @@ public class Activity_Template1 extends AppCompatActivity {
                 showImageOptionDialog();
             }
         });
+    }
+    public void OpenCreateDialogOptions(){
+        dialog.setContentView(R.layout.dialog_boxselection);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+
+        ImageView imageCreateChatBox = dialog.findViewById(R.id.imgCreateDBox);
+        ImageView imageCreateChatBubble = dialog.findViewById(R.id.imgCreateDBubble);
+        ImageView imageCreateChatFrame = dialog.findViewById(R.id.imgCreateDFrame);
+        imageCreateChatBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                        image.setImageResource(R.drawable.dialog_box2);
+                        //increments id for every image created
+                        image.setId(++image_ID);
+                        image.setClickable(true);
+                        //image.set
+                        //adds ontouchlistener event for dragging object
+                        image.setOnTouchListener(new MyTouchListener1());
+                        /* add clickListener that allows object to be deleted */
+                        image.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if(delete == true){
+                                    layout.removeView(view);
+                                    delete = false;
+                                }
+                                //if btnFlip has been pressed, then flip image after click
+                                if(flip == true){
+                                    image.setImageBitmap
+                                            (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+                                    flip = false;
+                                }
+                                if(maximize == true){
+                                    image.setScaleX(image.getScaleX()+.075f);
+                                    image.setScaleY(image.getScaleY()+.075f);
+                                }
+                                if(minimize == true){
+                                    image.setScaleX(image.getScaleX()-.075f);
+                                    image.setScaleY(image.getScaleY()-.075f);
+                                }
+                            }
+                        });
+                        layout.addView(image);
+                        dialog.dismiss();
+            }
+        });
+        imageCreateChatBubble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.dialog_bubble);
+                //increments id for every image created
+                image.setId(++image_ID);
+                image.setClickable(true);
+                //image.set
+                //adds ontouchlistener event for dragging object
+                image.setOnTouchListener(new MyTouchListener1());
+                /* add clickListener that allows object to be deleted */
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(delete == true){
+                            layout.removeView(view);
+                            delete = false;
+                        }
+                        //if btnFlip has been pressed, then flip image after click
+                        if(flip == true){
+                            image.setImageBitmap
+                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+                            flip = false;
+                        }
+                        if(maximize == true){
+                            image.setScaleX(image.getScaleX()+.075f);
+                            image.setScaleY(image.getScaleY()+.075f);
+                        }
+                        if(minimize == true){
+                            image.setScaleX(image.getScaleX()-.075f);
+                            image.setScaleY(image.getScaleY()-.075f);
+                        }
+                    }
+                });
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateChatFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.dialog_frame);
+                //increments id for every image created
+                image.setId(++image_ID);
+                image.setClickable(true);
+                //image.set
+                //adds ontouchlistener event for dragging object
+                image.setOnTouchListener(new MyTouchListener1());
+                /* add clickListener that allows object to be deleted */
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(delete == true){
+                            layout.removeView(view);
+                            delete = false;
+                        }
+                        //if btnFlip has been pressed, then flip image after click
+                        if(flip == true){
+                            image.setImageBitmap
+                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+                            flip = false;
+                        }
+                        if(maximize == true){
+                            image.setScaleX(image.getScaleX()+.075f);
+                            image.setScaleY(image.getScaleY()+.075f);
+                        }
+                        if(minimize == true){
+                            image.setScaleX(image.getScaleX()-.075f);
+                            image.setScaleY(image.getScaleY()-.075f);
+                        }
+                    }
+                });
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
     // methods that reset the maximize and minimize properties and
     // change button colors back to default

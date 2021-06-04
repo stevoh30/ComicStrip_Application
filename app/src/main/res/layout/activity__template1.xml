@@ -9,26 +9,14 @@
 
     <!-- scale type fitXY (auto sizes to fit image by stretching -->
 
-    <Button
-        android:id="@+id/btnMinimize"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
-        android:text="-"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.685" />
-
     <ImageView
-        android:id="@+id/imgCreateBubble"
+        android:id="@+id/imgCreateBubble2"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCreateText"
         app:layout_constraintVertical_bias="0.0"
@@ -77,17 +65,54 @@
         app:srcCompat="@drawable/blank_image2" />
 
     <Button
+        android:id="@+id/btnMinimize"
+        android:layout_width="65dp"
+        android:layout_height="54dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.726" />
+
+    <Button
+        android:id="@+id/btnLarge"
+        android:layout_width="65dp"
+        android:layout_height="54dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806" />
+
+    <Button
         android:id="@+id/btnDelete"
-        android:layout_width="70dp"
-        android:layout_height="58dp"
-        android:text="Delete text"
-        android:textSize="8sp"
+        android:layout_width="64dp"
+        android:layout_height="52dp"
+        android:text="ERASE"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.961" />
+
+    <Button
+        android:id="@+id/btnFlipImage"
+        android:layout_width="64dp"
+        android:layout_height="52dp"
+        android:text="Flip"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
 
     <ImageView
         android:id="@+id/imgCreateText"
@@ -100,30 +125,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
         app:srcCompat="@drawable/generatetext_icon" />
-
-    <Button
-        android:id="@+id/btnFlipImage"
-        android:layout_width="64dp"
-        android:layout_height="52dp"
-        android:text="Flip"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
-
-    <Button
-        android:id="@+id/btnLarge"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
-        android:text="+"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

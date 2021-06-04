@@ -1,7 +1,11 @@
 package com.example.comicstrip_application;
 
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 // class MyTouchListener allows user to drag and drop object anywhere within the layout
 class MyTouchListener1 implements View.OnTouchListener {
@@ -37,3 +41,4 @@ class MyTouchListener1 implements View.OnTouchListener {
         return false;
     }
 }
+
