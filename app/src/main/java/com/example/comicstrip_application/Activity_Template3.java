@@ -58,13 +58,13 @@ public class Activity_Template3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__template3);
         //Initialize variables
-        imageViewCreateText = findViewById(R.id.imgCreateText);
-        imageViewCreateBubble = findViewById(R.id.imgCreateBubble);
-        btnDeleteTxt = findViewById(R.id.btnDelete);
-        btnFlip = findViewById(R.id.btnFlipImage);
-        btnMaximize = findViewById(R.id.btnLarge);
-        btnMinimize = findViewById(R.id.btnMinimize);
-        ConstraintLayout layout = findViewById(R.id.myLayout);
+        imageViewCreateText = (ImageView) findViewById(R.id.imgCreateText);
+        imageViewCreateBubble = (ImageView) findViewById(R.id.imgCreateBubble);
+        btnDeleteTxt = (Button) findViewById(R.id.btnDelete);
+        btnFlip = (Button) findViewById(R.id.btnFlipImage);
+        btnMaximize = (Button) findViewById(R.id.btnLarge);
+        btnMinimize = (Button) findViewById(R.id.btnMinimize);
+        ConstraintLayout layout = findViewById(R.id.myLayoutT3);
         context = this;
 
 
@@ -169,7 +169,8 @@ public class Activity_Template3 extends AppCompatActivity {
         btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //when clicked, user selects object which is removed from the layout
+                //when clicked, user selects object which is removed from the
+                Toast.makeText(getApplicationContext(), "Custom Layout’s Button Clicked", Toast.LENGTH_LONG).show();
                 delete = true;
             }
         });
@@ -212,7 +213,7 @@ public class Activity_Template3 extends AppCompatActivity {
             }
         });
 
-        
+
     }
     // methods that reset the maximize and minimize properties and
     // change button colors back to default
