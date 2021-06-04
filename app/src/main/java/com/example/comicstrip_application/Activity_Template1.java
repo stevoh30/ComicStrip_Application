@@ -244,24 +244,7 @@ public class Activity_Template1 extends AppCompatActivity {
                         image.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                if(delete == true){
-                                    layout.removeView(view);
-                                    delete = false;
-                                }
-                                //if btnFlip has been pressed, then flip image after click
-                                if(flip == true){
-                                    image.setImageBitmap
-                                            (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
-                                    flip = false;
-                                }
-                                if(maximize == true){
-                                    image.setScaleX(image.getScaleX()+.075f);
-                                    image.setScaleY(image.getScaleY()+.075f);
-                                }
-                                if(minimize == true){
-                                    image.setScaleX(image.getScaleX()-.075f);
-                                    image.setScaleY(image.getScaleY()-.075f);
-                                }
+                                CheckGeneratedObjectsOnClickConditions(view, image);
                             }
                         });
                         layout.addView(image);
@@ -283,24 +266,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(delete == true){
-                            layout.removeView(view);
-                            delete = false;
-                        }
-                        //if btnFlip has been pressed, then flip image after click
-                        if(flip == true){
-                            image.setImageBitmap
-                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
-                            flip = false;
-                        }
-                        if(maximize == true){
-                            image.setScaleX(image.getScaleX()+.075f);
-                            image.setScaleY(image.getScaleY()+.075f);
-                        }
-                        if(minimize == true){
-                            image.setScaleX(image.getScaleX()-.075f);
-                            image.setScaleY(image.getScaleY()-.075f);
-                        }
+                        CheckGeneratedObjectsOnClickConditions(view, image);
                     }
                 });
                 layout.addView(image);
@@ -322,24 +288,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(delete == true){
-                            layout.removeView(view);
-                            delete = false;
-                        }
-                        //if btnFlip has been pressed, then flip image after click
-                        if(flip == true){
-                            image.setImageBitmap
-                                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
-                            flip = false;
-                        }
-                        if(maximize == true){
-                            image.setScaleX(image.getScaleX()+.075f);
-                            image.setScaleY(image.getScaleY()+.075f);
-                        }
-                        if(minimize == true){
-                            image.setScaleX(image.getScaleX()-.075f);
-                            image.setScaleY(image.getScaleY()-.075f);
-                        }
+                        CheckGeneratedObjectsOnClickConditions(view, image);
                     }
                 });
                 layout.addView(image);
@@ -347,6 +296,27 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+    //method used in onClick function to check for specific conditions, such as flip toggle
+    public void CheckGeneratedObjectsOnClickConditions(View view, ImageView image){
+        if(delete == true){
+            layout.removeView(view);
+            delete = false;
+        }
+        //if btnFlip has been pressed, then flip image after click
+        if(flip == true){
+            image.setImageBitmap
+                    (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
+            flip = false;
+        }
+        if(maximize == true){
+            image.setScaleX(image.getScaleX()+.075f);
+            image.setScaleY(image.getScaleY()+.075f);
+        }
+        if(minimize == true){
+            image.setScaleX(image.getScaleX()-.075f);
+            image.setScaleY(image.getScaleY()-.075f);
+        }
     }
     // methods that reset the maximize and minimize properties and
     // change button colors back to default
