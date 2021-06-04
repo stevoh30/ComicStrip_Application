@@ -90,7 +90,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Insert your text here:");
+                builder.setTitle("Insert Text to be Generated:");
 
                 // Set up the input
                 final EditText input = new EditText(context);
@@ -119,7 +119,7 @@ public class Activity_Template1 extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(delete == true){
                                     layout.removeView(view);
-                                    delete = false;
+                                    //delete = false;
                                 }
                                 if(maximize == true){
                                     tv.setScaleX(tv.getScaleX()+.075f);
@@ -154,16 +154,31 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
            public void onClick(View v) {
                 //when clicked, user selects object which is removed from the layout
-                delete = true;
+                if(delete == false) {
+                    delete = true;
+                    btnDeleteTxt.setBackgroundColor(Color.RED);
+                    ResetFlipProperties();
+                    ResetMinimizeProperties();
+                    ResetMaximimizeProperties();
+                }
+                else {
+                    ResetDeleteProperties();
+                }
             }
        });
        btnFlip.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               flip = true;
-               ResetMaximimizeProperties();
-               ResetMinimizeProperties();
-
+               if(flip == false){
+                    flip = true;
+                    btnFlip.setBackgroundColor(Color.RED);
+                    ResetMaximimizeProperties();
+                    ResetMinimizeProperties();
+                    ResetDeleteProperties();
+               }
+               else{
+                   ResetFlipProperties();
+               }
            }
         });
        btnMaximize.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +186,8 @@ public class Activity_Template1 extends AppCompatActivity {
            public void onClick(View view) {
                if(maximize == false){
                    ResetMinimizeProperties();
+                   ResetDeleteProperties();
+                   ResetFlipProperties();
                    maximize = true;
                    btnMaximize.setBackgroundColor(Color.RED);
                }
@@ -186,6 +203,8 @@ public class Activity_Template1 extends AppCompatActivity {
                     //toggle maximize off
                     //set maximize background color back to blue
                     ResetMaximimizeProperties();
+                    ResetDeleteProperties();
+                    ResetFlipProperties();
                     //toggles minimize on and background color to red
                     minimize = true;
                     btnMinimize.setBackgroundColor(Color.RED);
@@ -222,6 +241,8 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
     }
+    // method that calls a dialog to give the users options for which chatboxes they would
+    // like to generate
     public void OpenCreateDialogOptions(){
         dialog.setContentView(R.layout.dialog_boxselection);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -229,26 +250,17 @@ public class Activity_Template1 extends AppCompatActivity {
         ImageView imageCreateChatBox = dialog.findViewById(R.id.imgCreateDBox);
         ImageView imageCreateChatBubble = dialog.findViewById(R.id.imgCreateDBubble);
         ImageView imageCreateChatFrame = dialog.findViewById(R.id.imgCreateDFrame);
+
+        // setting onClickListeners to imageviews
         imageCreateChatBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
-                        image.setImageResource(R.drawable.dialog_box2);
-                        //increments id for every image created
-                        image.setId(++image_ID);
-                        image.setClickable(true);
-                        //image.set
-                        //adds ontouchlistener event for dragging object
-                        image.setOnTouchListener(new MyTouchListener1());
-                        /* add clickListener that allows object to be deleted */
-                        image.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                CheckGeneratedObjectsOnClickConditions(view, image);
-                            }
-                        });
-                        layout.addView(image);
-                        dialog.dismiss();
+                image.setImageResource(R.drawable.dialog_box2);
+                //Creates ID and implements onTouchListener to the object
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
             }
         });
         imageCreateChatBubble.setOnClickListener(new View.OnClickListener() {
@@ -256,19 +268,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.dialog_bubble);
-                //increments id for every image created
-                image.setId(++image_ID);
-                image.setClickable(true);
-                //image.set
-                //adds ontouchlistener event for dragging object
-                image.setOnTouchListener(new MyTouchListener1());
-                /* add clickListener that allows object to be deleted */
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        CheckGeneratedObjectsOnClickConditions(view, image);
-                    }
-                });
+                GenerateImageView(image);
                 layout.addView(image);
                 dialog.dismiss();
             }
@@ -278,36 +278,36 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.dialog_frame);
-                //increments id for every image created
-                image.setId(++image_ID);
-                image.setClickable(true);
-                //image.set
-                //adds ontouchlistener event for dragging object
-                image.setOnTouchListener(new MyTouchListener1());
-                /* add clickListener that allows object to be deleted */
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        CheckGeneratedObjectsOnClickConditions(view, image);
-                    }
-                });
+                GenerateImageView(image);
                 layout.addView(image);
                 dialog.dismiss();
             }
         });
         dialog.show();
     }
+    public void GenerateImageView(ImageView image){
+        //increments id for every image created
+        image.setId(++image_ID);
+        image.setClickable(true);
+        //adds ontouchlistener event for dragging object
+        image.setOnTouchListener(new MyTouchListener1());
+        /* add clickListener that allows object to be deleted */
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckGeneratedObjectsOnClickConditions(view, image);
+            }
+        });
+    }
     //method used in onClick function to check for specific conditions, such as flip toggle
     public void CheckGeneratedObjectsOnClickConditions(View view, ImageView image){
         if(delete == true){
             layout.removeView(view);
-            delete = false;
         }
         //if btnFlip has been pressed, then flip image after click
         if(flip == true){
             image.setImageBitmap
                     (flipImage(((BitmapDrawable) image.getDrawable()).getBitmap()));
-            flip = false;
         }
         if(maximize == true){
             image.setScaleX(image.getScaleX()+.075f);
@@ -328,6 +328,15 @@ public class Activity_Template1 extends AppCompatActivity {
         maximize = false;
         btnMaximize.setBackgroundColor(Color.BLUE);
     }
+    public void ResetDeleteProperties(){
+        delete = false;
+        btnDeleteTxt.setBackgroundColor(Color.BLUE);
+    }
+    public void ResetFlipProperties(){
+        flip = false;
+        btnFlip.setBackgroundColor(Color.BLUE);
+    }
+
     // method that allows for imageviews to be flipped horizontally
     private Bitmap flipImage(Bitmap image_bitmap) {
 
