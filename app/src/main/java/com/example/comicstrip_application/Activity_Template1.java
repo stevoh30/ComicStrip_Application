@@ -543,6 +543,13 @@ public class Activity_Template1 extends AppCompatActivity {
     //screenshot part
     private void takeScreenShot(View view) {
 
+        imageViewCreateBubble2.setVisibility(view.INVISIBLE);
+        imageViewCreateText.setVisibility(view.INVISIBLE);
+        btnScreenshot.setVisibility(view.INVISIBLE);
+        btnMinimize.setVisibility(view.INVISIBLE);
+        btnMaximize.setVisibility(view.INVISIBLE);
+        btnFlip.setVisibility(view.INVISIBLE);
+        btnDeleteTxt.setVisibility(view.INVISIBLE);
         //This is used to provide file name with Date a format
         Date date = new Date();
         CharSequence format = DateFormat.format("MM-dd-yyyy_hh:mm:ss", date);
@@ -561,13 +568,20 @@ public class Activity_Template1 extends AppCompatActivity {
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
 
+
 //This logic is used to save file at given location with the given filename and compress the Image Quality.
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
             fileOutputStream.flush();
             fileOutputStream.close();
-
+            imageViewCreateBubble2.setVisibility(view.VISIBLE);
+            imageViewCreateText.setVisibility(view.VISIBLE);
+            btnScreenshot.setVisibility(view.VISIBLE);
+            btnMinimize.setVisibility(view.VISIBLE);
+            btnMaximize.setVisibility(view.VISIBLE);
+            btnFlip.setVisibility(view.VISIBLE);
+            btnDeleteTxt.setVisibility(view.VISIBLE);
 //Create New Method to take ScreenShot with the imageFile.
             shareScreenShot(imageFile);
         } catch (IOException e) {
