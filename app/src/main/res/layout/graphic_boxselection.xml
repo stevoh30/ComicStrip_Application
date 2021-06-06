@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/layout_border"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Oops"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Pow"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Cool"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/imgCreateGraphic_Lightning"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.166"
+        app:srcCompat="@drawable/generategraphic_oops" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Pow"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/generategraphic_pow" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Zap"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Pow"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/generategraphic_zap" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Lightning"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Zap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/generategraphic_lightning" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Boom"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toEndOf="@+id/imgCreateGraphic_Pow"
+        app:srcCompat="@drawable/generategraphic_boom" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Cool"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Boom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/generategraphic_cool" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Generate Graphic"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

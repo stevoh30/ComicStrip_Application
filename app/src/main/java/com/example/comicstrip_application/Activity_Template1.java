@@ -39,7 +39,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
     private ImageView imageView1, imageView2, imageView3,
-            imageViewCreateText, imageViewCreateBubble2;
+            imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize;
     private Dialog dialog;
     byte imageViewSelector = 0;
@@ -76,6 +76,8 @@ public class Activity_Template1 extends AppCompatActivity {
         imageView3 = findViewById(R.id.imageViewPhoto3);
         imageViewCreateText = findViewById(R.id.imgCreateText);
         imageViewCreateBubble2 = findViewById(R.id.imgCreateBubble2);
+        imageViewCreateGraphics = findViewById(R.id.imgCreateGraphics);
+        imageViewChangeBackground = findViewById(R.id.imgCreateBackground);
         btnDeleteTxt = findViewById(R.id.btnDelete);
         btnFlip = findViewById(R.id.btnFlipImage);
         btnMaximize = findViewById(R.id.btnLarge);
@@ -83,7 +85,6 @@ public class Activity_Template1 extends AppCompatActivity {
         layout = findViewById(R.id.myLayout);
         context = this;
         dialog = new Dialog(this);
-
 
         imageViewCreateText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +149,20 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 OpenCreateDialogOptions();
+            }
+        });
+        imageViewCreateGraphics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenCreateGraphicOptions();
+            }
+        });
+        // Default background color
+        layout.setBackground(getResources().getDrawable(R.drawable.background_red));
+        imageViewChangeBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenChangeBackgroundColorOption();
             }
         });
        btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
@@ -285,6 +300,78 @@ public class Activity_Template1 extends AppCompatActivity {
         });
         dialog.show();
     }
+    public void OpenCreateGraphicOptions(){
+        dialog.setContentView(R.layout.graphic_boxselection);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        ImageView imageCreateLightning = dialog.findViewById(R.id.imgCreateGraphic_Lightning);
+        ImageView imageCreateOops = dialog.findViewById(R.id.imgCreateGraphic_Oops);
+        ImageView imageCreateCool = dialog.findViewById(R.id.imgCreateGraphic_Cool);
+        ImageView imageCreateBoom = dialog.findViewById(R.id.imgCreateGraphic_Boom);
+        ImageView imageCreatePow = dialog.findViewById(R.id.imgCreateGraphic_Pow);
+        ImageView imageCreateZap = dialog.findViewById(R.id.imgCreateGraphic_Zap);
+
+        imageCreateLightning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_lightningbolt);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateOops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_oops2);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateCool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_cool);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateBoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_boom);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreatePow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_pow);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateZap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_zap);
+                GenerateImageView(image);
+                layout.addView(image);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
     public void GenerateImageView(ImageView image){
         //increments id for every image created
         image.setId(++image_ID);
@@ -317,6 +404,35 @@ public class Activity_Template1 extends AppCompatActivity {
             image.setScaleX(image.getScaleX()-.075f);
             image.setScaleY(image.getScaleY()-.075f);
         }
+    }
+    public void OpenChangeBackgroundColorOption(){
+        dialog.setContentView(R.layout.background_boxselection);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        ImageView imageBackgroundRed = dialog.findViewById(R.id.imgBackgroundRed);
+        ImageView imageBackgroundViolet = dialog.findViewById(R.id.imgBackgroundViolet);
+        ImageView imageBackgroundTeal = dialog.findViewById(R.id.imgBackgroundTeal);
+        imageBackgroundRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_red));
+                dialog.dismiss();
+            }
+        });
+        imageBackgroundViolet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_violet));
+                dialog.dismiss();
+            }
+        });
+        imageBackgroundTeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_teal));
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
     // methods that reset the maximize and minimize properties and
     // change button colors back to default
