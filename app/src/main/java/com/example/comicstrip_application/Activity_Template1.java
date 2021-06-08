@@ -529,6 +529,9 @@ public class Activity_Template1 extends AppCompatActivity {
         btnMaximize.setVisibility(view.INVISIBLE);
         btnFlip.setVisibility(view.INVISIBLE);
         btnDeleteTxt.setVisibility(view.INVISIBLE);
+        imageViewChangeBackground.setVisibility(view.INVISIBLE);
+        imageViewCreateGraphics.setVisibility(view.INVISIBLE);
+        btnNextFragment.setVisibility(view.INVISIBLE);
         //This is used to provide file name with Date a format
         Date date = new Date();
         CharSequence format = DateFormat.format("MM-dd-yyyy_hh:mm:ss", date);
@@ -561,6 +564,9 @@ public class Activity_Template1 extends AppCompatActivity {
             btnMaximize.setVisibility(view.VISIBLE);
             btnFlip.setVisibility(view.VISIBLE);
             btnDeleteTxt.setVisibility(view.VISIBLE);
+            imageViewCreateGraphics.setVisibility(view.VISIBLE);
+            imageViewChangeBackground.setVisibility(view.VISIBLE);
+            btnNextFragment.setVisibility(view.VISIBLE);
             //Create New Method to take ScreenShot with the imageFile.
             shareScreenShot(imageFile);
         } catch (IOException e) {
