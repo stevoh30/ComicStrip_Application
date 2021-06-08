@@ -37,6 +37,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class Activity_Template1 extends AppCompatActivity {
     //Declare variables
     private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize, btnScreenshot;
+    ImageButton btnNextFragment;
     private Dialog dialog;
     private Context context;
     private String m_Text = "";
@@ -60,6 +62,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean maximize = false;
     private Boolean minimize = false;
     ConstraintLayout layout;
+    private byte currentFragment;
 
 
     // Request code gallery
@@ -88,6 +91,7 @@ public class Activity_Template1 extends AppCompatActivity {
         btnMaximize = findViewById(R.id.btnLarge);
         btnMinimize = findViewById(R.id.btnMinimize);
         btnScreenshot=findViewById(R.id.stnSreenshot);
+        btnNextFragment = findViewById(R.id.imgNextFragment);
         layout = findViewById(R.id.myLayout);
         context = this;
         dialog = new Dialog(this);
@@ -103,13 +107,49 @@ public class Activity_Template1 extends AppCompatActivity {
             //add fragment to this activity
             //the FragmentTransaction defines methods: add, replace,remove
             ft.add(R.id.frame1,f1,"FRAGMENT_ONE");
-
+            currentFragment = 1;
             //commit
             ft.commit();
         }
 
+        btnNextFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //create a fragment manager
+                FragmentManager fmgr = getSupportFragmentManager();
+                //create a fragment transaction
+                FragmentTransaction ft = fmgr.beginTransaction();
+                switch(currentFragment) {
+                    case 1:
+                        //create the fragment object
+                        Fragment_ImageLayout2 f2 = new Fragment_ImageLayout2();
+                        //replace fragment to this activity
+                        ft.replace(R.id.frame1, f2, "FRAGMENT_TWO");
+                        currentFragment = 2;
+                        //commit
+                        ft.commit();
+                        break;
+                    case 2:
+                        //create the fragment object
+                        Fragment_ImageLayout3 f3 = new Fragment_ImageLayout3();
+                        //replace fragment to this activity
+                        ft.replace(R.id.frame1, f3, "FRAGMENT_THREE");
+                        currentFragment = 3;
+                        //commit
+                        ft.commit();
+                        break;
+                    case 3:
+                        //create the fragment object
+                        Fragment_ImageLayout1 f1 = new Fragment_ImageLayout1();
+                        //replace fragment to this activity
+                        ft.replace(R.id.frame1, f1, "FRAGMENT_ONE");
+                        currentFragment = 1;
+                        //commit
+                        ft.commit();
 
-
+                }
+            }
+        });
         verifyStoragePermission(Activity_Template1.this);
         btnScreenshot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,6 +302,9 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void SetFragment(){
+
 
     }
     // method that calls a dialog to give the users options for which chatboxes they would
@@ -499,13 +542,13 @@ public class Activity_Template1 extends AppCompatActivity {
             }
 
             //Providing file name along with Bitmap to capture screenview
-            String path = mainDir + "/" + "ComisTrip" + "-" + format + ".jpeg";
+            String path = mainDir + "/" + "ComicSrip" + "-" + format + ".jpeg";
             view.setDrawingCacheEnabled(true);
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
 
 
-//This logic is used to save file at given location with the given filename and compress the Image Quality.
+            //This logic is used to save file at given location with the given filename and compress the Image Quality.
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
@@ -518,7 +561,7 @@ public class Activity_Template1 extends AppCompatActivity {
             btnMaximize.setVisibility(view.VISIBLE);
             btnFlip.setVisibility(view.VISIBLE);
             btnDeleteTxt.setVisibility(view.VISIBLE);
-//Create New Method to take ScreenShot with the imageFile.
+            //Create New Method to take ScreenShot with the imageFile.
             shareScreenShot(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
