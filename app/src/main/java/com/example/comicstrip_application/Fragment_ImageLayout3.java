@@ -39,7 +39,6 @@ public class Fragment_ImageLayout3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment__image_layout3, container,false);
-        view.setBackgroundColor(Color.BLACK);
         imageView_Photo6 = view.findViewById(R.id.imgPhoto6);
         imageView_Photo7 = view.findViewById(R.id.imgPhoto7);
         imageView_Photo8 = view.findViewById(R.id.imgPhoto8);
@@ -101,20 +100,8 @@ public class Fragment_ImageLayout3 extends Fragment {
 
                                 }else{
                                     if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
-                                        /**
-                                         return false if user asked click on "Don't ask me again" box
-                                         or the permission is dissable on the device
-                                         your dialog with user won't be displayed
-                                         */
-                                        /**
-                                         * returns true, if the user rejected before but is trying to access again
-                                         * then your dialog to convince the user why they should grant it, will show
-                                         */
                                         Toast.makeText(getActivity(),"grant it this permission will allow you to access storage from this app", Toast.LENGTH_LONG).show();
                                     }
-                                    /**
-                                     * permission is not already granted. request it
-                                     */
                                     //request it
                                     ActivityCompat.requestPermissions(getActivity(),
                                             new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
@@ -130,23 +117,10 @@ public class Fragment_ImageLayout3 extends Fragment {
 
                                 }else{
                                     if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                                        /**
-                                         return false if user asked click on "Don't ask me again" box
-                                         or the permission is dissable on the device
-                                         your dialog with user won't be displayed
-                                         */
-                                        /**
-                                         * returns true, if the user rejected before but is trying to access again
-                                         * then your dialog to convince the user why they should grant it, will show
-                                         */
+
                                         Toast.makeText(getContext(),"grant it this permission will allow you to make some change from this app",
                                                 Toast.LENGTH_LONG).show();
                                     }
-
-                                    /**
-                                     * permission is not already granted. request it
-                                     */
-
                                     //request it
                                     ActivityCompat.requestPermissions(getActivity(),
                                             new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },

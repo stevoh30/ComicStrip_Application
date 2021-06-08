@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
     android:layout_gravity="center"
-    android:background="@drawable/layout_border"
     android:layout_height="wrap_content"
     tools:context=".Fragment_ImageLayout1">
 
