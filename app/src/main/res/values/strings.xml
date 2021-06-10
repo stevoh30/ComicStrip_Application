@@ -14,6 +14,11 @@
         <item>Take picture with camera</item>
     </string-array>
 
+    <string-array name="image_options2">
+        <item>Edit Photo</item>
+        <item>Replace picture</item>
+    </string-array>
+
     <string name="alert_dialog_title">Select Image Option</string>
     <string name="dialog_img_options">choose</string>
     <string name="dialog_image_options">Select Image Option</string>

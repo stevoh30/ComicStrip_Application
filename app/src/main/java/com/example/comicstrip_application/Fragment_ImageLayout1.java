@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -36,6 +38,9 @@ public class Fragment_ImageLayout1 extends Fragment {
     private static final int GALLERY_REQUEST = 9;
     private static final int CAMERA_REQUEST = 11;
     byte imageViewSelector = 0;
+    Boolean image1Populated = false;
+    Boolean image2Populated = false;
+    Boolean image3Populated = false;
     private ImageView imageView_Photo1, imageView_Photo2, imageView_Photo3;
 
 
@@ -55,7 +60,12 @@ public class Fragment_ImageLayout1 extends Fragment {
             public void onClick(View view) {
                 imageViewSelector = 1;
                 //getImageFromGalleryPermissions();
-                showImageOptionDialog();
+                if(image1Populated == false) {
+                    showImageOptionDialog();
+                }
+                else{
+                    showImageOptionDialog2();
+                }
             }
         });
         imageView_Photo2.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +73,7 @@ public class Fragment_ImageLayout1 extends Fragment {
             public void onClick(View view) {
                 imageViewSelector = 2;
                 //getImageFromGalleryPermissions();
+                if(image2Populated == false)
                 showImageOptionDialog();
             }
         });
@@ -71,12 +82,39 @@ public class Fragment_ImageLayout1 extends Fragment {
             public void onClick(View view) {
                 imageViewSelector = 3;
                 //getImageFromGalleryPermissions();
+                if(image3Populated == false)
                 showImageOptionDialog();
             }
         });
-
         return view;
 
+    }
+    //create image dialog box, allowing user to edit or replace image
+    private void showImageOptionDialog2(){
+        final String[] options2 = getResources().getStringArray(R.array.image_options2);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.dialog_image_options)
+                .setItems(options2, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch(i){
+                            case 0:
+                                //edit options
+                                //sendImage();
+                                imageView_Photo1.setColorFilter(Color.RED, PorterDuff.Mode.DARKEN);
+                                break;
+                            case 1:
+                                showImageOptionDialog();
+                        }
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    //send image to activity2
+    public void SendImage(View view){
+//        Bundle extras = new Bundle();
+//        extras.putParcelable("Bitmap", bmp);
     }
 
     // create image dialog box, allowing user to choose between gallery and taking photo
@@ -189,12 +227,15 @@ public class Fragment_ImageLayout1 extends Fragment {
             switch(imageViewSelector) {
                 case 1:
                     imageView_Photo1.setImageURI(imageUri);
+                    image1Populated = true;
                     break;
                 case 2:
                     imageView_Photo2.setImageURI(imageUri);
+                    image2Populated = true;
                     break;
                 case 3:
                     imageView_Photo3.setImageURI(imageUri);
+                    image3Populated = true;
                     break;
             }
         }
@@ -204,14 +245,17 @@ public class Fragment_ImageLayout1 extends Fragment {
                 case 1:
                     //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     imageView_Photo1.setImageBitmap(bitmap);
+                    image1Populated = true;
                     break;
                 case 2:
                     //Bitmap bitmap2 = (Bitmap) data.getExtras().get("data");
                     imageView_Photo2.setImageBitmap(bitmap);
+                    image2Populated = true;
                     break;
                 case 3:
                     // Bitmap bitmap3 = (Bitmap) data.getExtras().get("data");
                     imageView_Photo3.setImageBitmap(bitmap);
+                    image3Populated = true;
                     break;
             }
         }
