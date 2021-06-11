@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -100,8 +101,8 @@ public class Fragment_ImageLayout1 extends Fragment {
                         switch(i){
                             case 0:
                                 //edit options
-                                //sendImage();
-                                imageView_Photo1.setColorFilter(Color.RED, PorterDuff.Mode.DARKEN);
+                                //SendImage();
+                                //imageView_Photo1.setColorFilter(Color.RED, PorterDuff.Mode.DARKEN);
                                 break;
                             case 1:
                                 showImageOptionDialog();
@@ -111,10 +112,34 @@ public class Fragment_ImageLayout1 extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    //send image to activity2
-    public void SendImage(View view){
-//        Bundle extras = new Bundle();
-//        extras.putParcelable("Bitmap", bmp);
+    //send image to activity2 based on user selection
+    public void SendImage(){
+        BitmapDrawable drawable;
+        Bitmap bitmap = null;
+        //convert image to bitmap
+        switch(imageViewSelector){
+            case 1:
+                imageView_Photo1.invalidate();
+                drawable = (BitmapDrawable) imageView_Photo1.getDrawable();
+                bitmap = drawable.getBitmap();
+                break;
+            case 2:
+                imageView_Photo2.invalidate();
+                drawable = (BitmapDrawable) imageView_Photo2.getDrawable();
+                bitmap = drawable.getBitmap();
+                break;
+            case 3:
+                imageView_Photo3.invalidate();
+                drawable = (BitmapDrawable) imageView_Photo3.getDrawable();
+                bitmap = drawable.getBitmap();
+                break;
+        }
+        //sent bitmap via intent to activity_template2
+        Bundle extras = new Bundle();
+        extras.putParcelable("bitmap", bitmap);
+        Intent intent = new Intent(getContext(), Activity_Template2.class);
+        intent.putExtras(extras);
+        startActivityForResult(intent, 100);
     }
 
     // create image dialog box, allowing user to choose between gallery and taking photo
