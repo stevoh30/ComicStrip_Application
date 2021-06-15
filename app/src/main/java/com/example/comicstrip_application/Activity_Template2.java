@@ -127,6 +127,8 @@ public class Activity_Template2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 color = Color.WHITE;
+                darken = true;
+                lighten = false;
                 imageEdit.setColorFilter(Color.WHITE, PorterDuff.Mode.DARKEN);
             }
         });
