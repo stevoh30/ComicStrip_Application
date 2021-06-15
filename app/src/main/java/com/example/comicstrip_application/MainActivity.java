@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         //sound effect
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.fairysparkle);
         mp.start();
-        Intent selectTemplateIntent = new Intent(this, Activity_SelectTemplate.class);
-        startActivity(selectTemplateIntent);
+        Intent template1Intent = new Intent(this, Activity_Template1.class);
+        startActivity(template1Intent);
     }
     public void CloseApplication(){
 

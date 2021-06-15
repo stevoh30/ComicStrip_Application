@@ -126,6 +126,7 @@ public class Activity_Template2 extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                color = Color.WHITE;
                 imageEdit.setColorFilter(Color.WHITE, PorterDuff.Mode.DARKEN);
             }
         });
