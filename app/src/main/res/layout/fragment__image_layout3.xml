@@ -5,6 +5,7 @@
     android:layout_width="280dp"
     android:layout_gravity="center"
     android:layout_height="600dp"
+    android:background="@color/cardview_dark_background"
     tools:context=".Fragment_ImageLayout3">
 
     <ImageView
@@ -33,13 +34,13 @@
 
     <ImageView
         android:id="@+id/imgPhoto6"
-        android:layout_width="135dp"
+        android:layout_width="130dp"
         android:layout_height="192dp"
         android:scaleType="centerCrop"
         android:src="@drawable/blank_image2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.492" />
