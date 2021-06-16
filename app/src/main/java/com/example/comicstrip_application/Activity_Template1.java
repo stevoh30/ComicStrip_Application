@@ -65,13 +65,6 @@ public class Activity_Template1 extends AppCompatActivity {
     ConstraintLayout layout;
     private byte currentFragment;
 
-
-    // Request code gallery
-    public static final int REQUEST_STORAGE_CODE = 1;
-    public static final int REQUEST_STORAGE2_CODE = 3;
-    private static final int GALLERY_REQUEST = 9;
-    private static final int CAMERA_REQUEST = 11;
-
     private TextView tv;
     int image_ID = 0;
     int tv_ID = 1000;
