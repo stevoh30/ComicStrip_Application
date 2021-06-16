@@ -51,7 +51,7 @@ import java.util.Date;
 public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
-    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground;
+    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground, imageViewElements;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize, btnScreenshot;
     ImageButton btnNextFragment;
     private Dialog dialog;
@@ -61,6 +61,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean flip = false;
     private Boolean maximize = false;
     private Boolean minimize = false;
+    private Boolean showElements = true;
     ConstraintLayout layout;
     private byte currentFragment;
 
@@ -82,6 +83,7 @@ public class Activity_Template1 extends AppCompatActivity {
         setContentView(R.layout.activity__template1);
 
         //Initialize variables
+        imageViewElements = findViewById(R.id.imgElements);
         imageViewCreateText = findViewById(R.id.imgCreateText);
         imageViewCreateBubble2 = findViewById(R.id.imgCreateBubble2);
         imageViewCreateGraphics = findViewById(R.id.imgCreateGraphics);
@@ -112,6 +114,19 @@ public class Activity_Template1 extends AppCompatActivity {
             ft.commit();
         }
 
+        imageViewElements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(showElements == true){
+                    HideInterface(view);
+                    showElements = false;
+                }
+                else{
+                    ShowInterface(view);
+                    showElements = true;
+                }
+            }
+        });
         btnNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -302,10 +317,6 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
-    }
-    public void SetFragment(){
-
-
     }
     // method that calls a dialog to give the users options for which chatboxes they would
     // like to generate
@@ -522,16 +533,8 @@ public class Activity_Template1 extends AppCompatActivity {
     //screenshot part
     private void takeScreenShot(View view) {
 
-        imageViewCreateBubble2.setVisibility(view.INVISIBLE);
-        imageViewCreateText.setVisibility(view.INVISIBLE);
-        btnScreenshot.setVisibility(view.INVISIBLE);
-        btnMinimize.setVisibility(view.INVISIBLE);
-        btnMaximize.setVisibility(view.INVISIBLE);
-        btnFlip.setVisibility(view.INVISIBLE);
-        btnDeleteTxt.setVisibility(view.INVISIBLE);
-        imageViewChangeBackground.setVisibility(view.INVISIBLE);
-        imageViewCreateGraphics.setVisibility(view.INVISIBLE);
-        btnNextFragment.setVisibility(view.INVISIBLE);
+        HideInterface(view);
+        imageViewElements.setVisibility(view.INVISIBLE);
         //This is used to provide file name with Date a format
         Date date = new Date();
         CharSequence format = DateFormat.format("MM-dd-yyyy_hh:mm:ss", date);
@@ -557,21 +560,37 @@ public class Activity_Template1 extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
             fileOutputStream.flush();
             fileOutputStream.close();
-            imageViewCreateBubble2.setVisibility(view.VISIBLE);
-            imageViewCreateText.setVisibility(view.VISIBLE);
-            btnScreenshot.setVisibility(view.VISIBLE);
-            btnMinimize.setVisibility(view.VISIBLE);
-            btnMaximize.setVisibility(view.VISIBLE);
-            btnFlip.setVisibility(view.VISIBLE);
-            btnDeleteTxt.setVisibility(view.VISIBLE);
-            imageViewCreateGraphics.setVisibility(view.VISIBLE);
-            imageViewChangeBackground.setVisibility(view.VISIBLE);
-            btnNextFragment.setVisibility(view.VISIBLE);
+            ShowInterface(view);
+            imageViewElements.setVisibility(view.VISIBLE);
             //Create New Method to take ScreenShot with the imageFile.
             shareScreenShot(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void HideInterface(View view){
+        imageViewCreateBubble2.setVisibility(view.INVISIBLE);
+        imageViewCreateText.setVisibility(view.INVISIBLE);
+        btnScreenshot.setVisibility(view.INVISIBLE);
+        btnMinimize.setVisibility(view.INVISIBLE);
+        btnMaximize.setVisibility(view.INVISIBLE);
+        btnFlip.setVisibility(view.INVISIBLE);
+        btnDeleteTxt.setVisibility(view.INVISIBLE);
+        imageViewChangeBackground.setVisibility(view.INVISIBLE);
+        imageViewCreateGraphics.setVisibility(view.INVISIBLE);
+        btnNextFragment.setVisibility(view.INVISIBLE);
+    }
+    private void ShowInterface(View view){
+        imageViewCreateBubble2.setVisibility(view.VISIBLE);
+        imageViewCreateText.setVisibility(view.VISIBLE);
+        btnScreenshot.setVisibility(view.VISIBLE);
+        btnMinimize.setVisibility(view.VISIBLE);
+        btnMaximize.setVisibility(view.VISIBLE);
+        btnFlip.setVisibility(view.VISIBLE);
+        btnDeleteTxt.setVisibility(view.VISIBLE);
+        imageViewCreateGraphics.setVisibility(view.VISIBLE);
+        imageViewChangeBackground.setVisibility(view.VISIBLE);
+        btnNextFragment.setVisibility(view.VISIBLE);
     }
 
     //Share ScreenShot
