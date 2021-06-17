@@ -166,7 +166,7 @@ public class Activity_Template2 extends AppCompatActivity {
     //Method to switch imageColor and change filters depending on selection
     private void SwitchImageColor(int c){
         if(lighten == true){
-            imageEdit.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+            imageEdit.setColorFilter(color, PorterDuff.Mode.OVERLAY);
         }
         else if(darken == true) {
             imageEdit.setColorFilter(color, PorterDuff.Mode.DARKEN);

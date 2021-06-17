@@ -259,14 +259,14 @@ public class Fragment_ImageLayout2 extends Fragment {
                     if (light == false)
                         imageView_Photo4.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo4.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo4.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                     break;
                 case 2:
                     if (light == false)
                         imageView_Photo5.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo5.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo5.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                     break;
             }

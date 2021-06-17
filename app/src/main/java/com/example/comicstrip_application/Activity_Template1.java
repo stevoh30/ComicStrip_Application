@@ -85,7 +85,7 @@ public class Activity_Template1 extends AppCompatActivity {
         btnFlip = findViewById(R.id.btnFlipImage);
         btnMaximize = findViewById(R.id.btnLarge);
         btnMinimize = findViewById(R.id.btnMinimize);
-        btnScreenshot=findViewById(R.id.stnSreenshot);
+        btnScreenshot=findViewById(R.id.btnShare);
         btnNextFragment = findViewById(R.id.imgNextFragment);
         layout = findViewById(R.id.myLayout);
         context = this;

@@ -294,21 +294,21 @@ public class Fragment_ImageLayout1 extends Fragment {
                     if (light == false)
                         imageView_Photo1.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo1.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo1.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                   break;
                   case 2:
                       if (light == false)
                           imageView_Photo2.setColorFilter(color, PorterDuff.Mode.DARKEN);
                       else {
-                          imageView_Photo2.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                          imageView_Photo2.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                       }
                       break;
                   case 3:
                   if (light == false)
                       imageView_Photo3.setColorFilter(color, PorterDuff.Mode.DARKEN);
                   else {
-                      imageView_Photo3.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                      imageView_Photo3.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                   }
               }
         }

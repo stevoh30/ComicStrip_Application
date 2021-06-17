@@ -145,9 +145,9 @@ public class Fragment_ImageLayout3 extends Fragment {
                 //if picture is taken
                 if(image1Camera == true) {
                     imageView_Photo6.invalidate();
-                    PictureOptionCamera = true;
                     drawable = (BitmapDrawable) imageView_Photo6.getDrawable();
                     bitmap = drawable.getBitmap();
+                    PictureOptionCamera = true;
                 }
                 //if picture is loaded from gallery
                 else{
@@ -314,27 +314,27 @@ public class Fragment_ImageLayout3 extends Fragment {
                     if (light == false)
                         imageView_Photo6.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo6.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo6.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                     break;
                 case 2:
                     if (light == false)
                         imageView_Photo7.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo7.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo7.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                     break;
                 case 3:
                     if (light == false)
                         imageView_Photo8.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo8.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo8.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
                 case 4:
                     if (light == false)
                         imageView_Photo9.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
-                        imageView_Photo9.setColorFilter(color, PorterDuff.Mode.LIGHTEN);
+                        imageView_Photo9.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
             }
         }
@@ -363,7 +363,7 @@ public class Fragment_ImageLayout3 extends Fragment {
                     image3Camera = false;
                     break;
                 case 4:
-                    image3Uri = imageUri;
+                    image4Uri = imageUri;
                     imageView_Photo9.setImageURI(imageUri);
                     image4Populated = true;
                     image4Camera = false;
@@ -374,25 +374,21 @@ public class Fragment_ImageLayout3 extends Fragment {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             switch(imageViewSelector) {
                 case 1:
-                    //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     imageView_Photo6.setImageBitmap(bitmap);
                     image1Camera = true;
                     image1Populated = true;
                     break;
                 case 2:
-                    //Bitmap bitmap2 = (Bitmap) data.getExtras().get("data");
                     imageView_Photo7.setImageBitmap(bitmap);
                     image2Camera = true;
                     image2Populated = true;
                     break;
                 case 3:
-                    // Bitmap bitmap3 = (Bitmap) data.getExtras().get("data");
                     imageView_Photo8.setImageBitmap(bitmap);
                     image3Camera = true;
                     image3Populated = true;
                     break;
                 case 4:
-                    // Bitmap bitmap3 = (Bitmap) data.getExtras().get("data");
                     imageView_Photo9.setImageBitmap(bitmap);
                     image4Camera = true;
                     image4Populated = true;
