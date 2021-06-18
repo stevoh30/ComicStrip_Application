@@ -252,7 +252,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 //when clicked, user selects object which is removed from the layout
                 if(delete == false) {
                     delete = true;
-                    btnDeleteTxt.setBackgroundColor(Color.RED);
+                    btnDeleteTxt.setForeground(getDrawable(R.drawable.deleteclick_icon));
                     ResetFlipProperties();
                     ResetMinimizeProperties();
                     ResetMaximimizeProperties();
@@ -267,7 +267,8 @@ public class Activity_Template1 extends AppCompatActivity {
            public void onClick(View view) {
                if(flip == false){
                     flip = true;
-                    btnFlip.setBackgroundColor(Color.RED);
+                    //btnFlip.setBackgroundColor(Color.RED);
+                   btnFlip.setForeground(getDrawable(R.drawable.flipclick_icon));
                     ResetMaximimizeProperties();
                     ResetMinimizeProperties();
                     ResetDeleteProperties();
@@ -285,7 +286,8 @@ public class Activity_Template1 extends AppCompatActivity {
                    ResetDeleteProperties();
                    ResetFlipProperties();
                    maximize = true;
-                   btnMaximize.setBackgroundColor(Color.RED);
+                   //btnMaximize.setBackgroundColor(Color.RED);
+                   btnMaximize.setForeground(getDrawable(R.drawable.plusclick_icon));
                }
                else {
                    ResetMaximimizeProperties();
@@ -303,7 +305,7 @@ public class Activity_Template1 extends AppCompatActivity {
                     ResetFlipProperties();
                     //toggles minimize on and background color to red
                     minimize = true;
-                    btnMinimize.setBackgroundColor(Color.RED);
+                    btnMinimize.setForeground(getDrawable(R.drawable.negativeclick_icon));
                 }
                 else {
                     ResetMinimizeProperties();
@@ -493,19 +495,23 @@ public class Activity_Template1 extends AppCompatActivity {
     // change button colors back to default
     public void ResetMinimizeProperties(){
         minimize = false;
-        btnMinimize.setBackgroundColor(Color.BLUE);
+        //btnMinimize.setBackgroundColor(Color.BLUE);
+        btnMinimize.setForeground(getDrawable(R.drawable.negative_icon));
     }
     public void ResetMaximimizeProperties(){
         maximize = false;
-        btnMaximize.setBackgroundColor(Color.BLUE);
+        //btnMaximize.setBackgroundColor(Color.BLUE);
+        btnMaximize.setForeground(getDrawable(R.drawable.plus_icon));
     }
     public void ResetDeleteProperties(){
         delete = false;
-        btnDeleteTxt.setBackgroundColor(Color.BLUE);
+        //btnDeleteTxt.setBackgroundColor(Color.BLUE);
+        btnDeleteTxt.setForeground(getDrawable(R.drawable.delete_icon));;
     }
     public void ResetFlipProperties(){
         flip = false;
-        btnFlip.setBackgroundColor(Color.BLUE);
+        //btnFlip.setBackgroundColor(Color.BLUE);
+        btnFlip.setForeground(getDrawable(R.drawable.flip_icon));
     }
 
     // method that allows for imageviews to be flipped horizontally

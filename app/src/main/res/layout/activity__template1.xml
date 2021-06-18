@@ -11,17 +11,18 @@
 
     <Button
         android:id="@+id/btnShare"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/share_icon"
         android:shadowColor="@color/black"
         android:text="Share"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <FrameLayout
         android:id="@+id/frame1"
@@ -49,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCreateGraphics"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/generatebackground_icon" />
+        app:srcCompat="@drawable/background_icon" />
 
     <ImageView
         android:id="@+id/imgCreateGraphics"
@@ -91,54 +92,56 @@
         app:srcCompat="@drawable/generatebubble_icon" />
 
     <Button
-        android:id="@+id/btnFlipImage"
-        android:layout_width="64dp"
-        android:layout_height="52dp"
-        android:text="Flip"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
-    <Button
-        android:id="@+id/btnMinimize"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
-        android:text="-"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
-
-    <Button
         android:id="@+id/btnLarge"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/plus_icon"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
+        app:layout_constraintVertical_bias="0.729" />
+
+    <Button
+        android:id="@+id/btnMinimize"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/negative_icon"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/btnFlipImage"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/flip_icon"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="64dp"
-        android:layout_height="52dp"
-        android:text="ERASE"
-        android:textSize="9sp"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/delete_icon"
+        android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961" />
+        app:layout_constraintVertical_bias="0.947" />
 
     <ImageButton
         android:id="@+id/imgNextFragment"
@@ -159,7 +162,7 @@
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977"
