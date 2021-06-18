@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/alexbrush_regular" />
+    <font
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        android:font="@font/chunkfive_print" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/grandhotel_regular" />
+    <font
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        android:font="@font/greatvibes_regular" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/kaushanscript_regular" />
+    <font
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        android:font="@font/lato_semibold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/oswald_heavy" />
+    <font
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        android:font="@font/pacifico" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/windsong" />
+
+</font-family>

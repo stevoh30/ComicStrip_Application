@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -39,6 +40,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +67,8 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean minimizeEditTools = false;
     ConstraintLayout layout;
     private byte currentFragment;
+    //font
+    private Typeface typeAlexBrush, typeChunkFive, typeGrandHotel, typeGreatVibes, typeKaushan, typeLato, typeOswald, typePacifico, typeWingSong;
 
     private TextView tv;
     int image_ID = 0;
@@ -92,6 +96,16 @@ public class Activity_Template1 extends AppCompatActivity {
         layout = findViewById(R.id.myLayout);
         context = this;
         dialog = new Dialog(this);
+        //font
+        typeAlexBrush = getResources().getFont(R.font.alexbrush_regular);
+        typeChunkFive = getResources().getFont(R.font.chunkfive_print);
+        typeGrandHotel = getResources().getFont(R.font.grandhotel_regular);
+        typeGreatVibes = getResources().getFont(R.font.greatvibes_regular);
+        typeKaushan = getResources().getFont(R.font.kaushanscript_regular);
+        typeLato = getResources().getFont(R.font.lato_semibold);
+        typeOswald = getResources().getFont(R.font.oswald_heavy);
+        typePacifico = getResources().getFont(R.font.pacifico);
+        typeWingSong = getResources().getFont(R.font.windsong);
 
         //display fragment_one at the start of this activity
         if(savedInstanceState == null){
@@ -178,6 +192,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
                 // Set up the input
                 final EditText input = new EditText(context);
+                final String[] options = getResources().getStringArray(R.array.font_options);
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
@@ -199,6 +214,7 @@ public class Activity_Template1 extends AppCompatActivity {
                         tv.setGravity(Gravity.CENTER);
                         tv.setOnTouchListener(new MyTouchListener1());
                         tv.setOnClickListener(new View.OnClickListener() {
+                        //tv.setTypeface(typeAlexBrush);
                             @Override
                             public void onClick(View view) {
                                 if(delete == true){
@@ -215,10 +231,190 @@ public class Activity_Template1 extends AppCompatActivity {
                                 }
                             }
                         });
-
+                        //final String[] options = getResources().getStringArray(R.array.image_options);
                         layout.addView(tv);
                     }
+                }).setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case 0:
+                                //create textview object using input dialog value
+                                m_Text = input.getText().toString();
+                                tv = new TextView(Activity_Template1.this);
+                                tv.setId(--tv_ID);
+                                tv.setText(m_Text);
+                                tv.setTextSize(20);
+                                tv.setTextColor(Color.BLACK);
+                                tv.setClickable(true);
+                                tv.setPadding(20, 10, 0, 0);
+                                tv.setGravity(Gravity.CENTER);
+                                tv.setOnTouchListener(new MyTouchListener1());
+                                tv.setOnClickListener(new View.OnClickListener() {
+                                    //tv.setTypeface(typeAlexBrush);
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(delete == true){
+                                            layout.removeView(view);
+                                            //delete = false;
+                                        }
+                                        if(maximize == true){
+                                            tv.setScaleX(tv.getScaleX()+.075f);
+                                            tv.setScaleY(tv.getScaleY()+.075f);
+                                        }
+                                        if(minimize == true){
+                                            tv.setScaleX(tv.getScaleX()-.075f);
+                                            tv.setScaleY(tv.getScaleY()-.075f);
+                                        }
+                                    }
+                                });
+                                //final String[] options = getResources().getStringArray(R.array.image_options);
+                                tv.setTypeface(typePacifico);
+                                layout.addView(tv);
+                                break;
+                            case 1:
+                                //create textview object using input dialog value
+                                m_Text = input.getText().toString();
+                                tv = new TextView(Activity_Template1.this);
+                                tv.setId(--tv_ID);
+                                tv.setText(m_Text);
+                                tv.setTextSize(20);
+                                tv.setTextColor(Color.BLACK);
+                                tv.setClickable(true);
+                                tv.setPadding(20, 10, 0, 0);
+                                tv.setGravity(Gravity.CENTER);
+                                tv.setOnTouchListener(new MyTouchListener1());
+                                tv.setOnClickListener(new View.OnClickListener() {
+                                    //tv.setTypeface(typeAlexBrush);
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(delete == true){
+                                            layout.removeView(view);
+                                            //delete = false;
+                                        }
+                                        if(maximize == true){
+                                            tv.setScaleX(tv.getScaleX()+.075f);
+                                            tv.setScaleY(tv.getScaleY()+.075f);
+                                        }
+                                        if(minimize == true){
+                                            tv.setScaleX(tv.getScaleX()-.075f);
+                                            tv.setScaleY(tv.getScaleY()-.075f);
+                                        }
+                                    }
+                                });
+                                //final String[] options = getResources().getStringArray(R.array.image_options);
+                                tv.setTypeface(typeChunkFive);
+                                layout.addView(tv);
+                                break;
+                            case 2:
+                                //create textview object using input dialog value
+                                m_Text = input.getText().toString();
+                                tv = new TextView(Activity_Template1.this);
+                                tv.setId(--tv_ID);
+                                tv.setText(m_Text);
+                                tv.setTextSize(20);
+                                tv.setTextColor(Color.BLACK);
+                                tv.setClickable(true);
+                                tv.setPadding(20, 10, 0, 0);
+                                tv.setGravity(Gravity.CENTER);
+                                tv.setOnTouchListener(new MyTouchListener1());
+                                tv.setOnClickListener(new View.OnClickListener() {
+                                    //tv.setTypeface(typeAlexBrush);
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(delete == true){
+                                            layout.removeView(view);
+                                            //delete = false;
+                                        }
+                                        if(maximize == true){
+                                            tv.setScaleX(tv.getScaleX()+.075f);
+                                            tv.setScaleY(tv.getScaleY()+.075f);
+                                        }
+                                        if(minimize == true){
+                                            tv.setScaleX(tv.getScaleX()-.075f);
+                                            tv.setScaleY(tv.getScaleY()-.075f);
+                                        }
+                                    }
+                                });
+                                //final String[] options = getResources().getStringArray(R.array.image_options);
+                                tv.setTypeface(typeLato);
+                                layout.addView(tv);
+                                break;
+                            case 3:
+                                //create textview object using input dialog value
+                                m_Text = input.getText().toString();
+                                tv = new TextView(Activity_Template1.this);
+                                tv.setId(--tv_ID);
+                                tv.setText(m_Text);
+                                tv.setTextSize(20);
+                                tv.setTextColor(Color.BLACK);
+                                tv.setClickable(true);
+                                tv.setPadding(20, 10, 0, 0);
+                                tv.setGravity(Gravity.CENTER);
+                                tv.setOnTouchListener(new MyTouchListener1());
+                                tv.setOnClickListener(new View.OnClickListener() {
+                                    //tv.setTypeface(typeAlexBrush);
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(delete == true){
+                                            layout.removeView(view);
+                                            //delete = false;
+                                        }
+                                        if(maximize == true){
+                                            tv.setScaleX(tv.getScaleX()+.075f);
+                                            tv.setScaleY(tv.getScaleY()+.075f);
+                                        }
+                                        if(minimize == true){
+                                            tv.setScaleX(tv.getScaleX()-.075f);
+                                            tv.setScaleY(tv.getScaleY()-.075f);
+                                        }
+                                    }
+                                });
+                                //final String[] options = getResources().getStringArray(R.array.image_options);
+                                tv.setTypeface(typeKaushan);
+                                layout.addView(tv);
+                                break;
+                            case 4:
+                                //create textview object using input dialog value
+                                m_Text = input.getText().toString();
+                                tv = new TextView(Activity_Template1.this);
+                                tv.setId(--tv_ID);
+                                tv.setText(m_Text);
+                                tv.setTextSize(20);
+                                tv.setTextColor(Color.BLACK);
+                                tv.setClickable(true);
+                                tv.setPadding(20, 10, 0, 0);
+                                tv.setGravity(Gravity.CENTER);
+                                tv.setOnTouchListener(new MyTouchListener1());
+                                tv.setOnClickListener(new View.OnClickListener() {
+                                    //tv.setTypeface(typeAlexBrush);
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(delete == true){
+                                            layout.removeView(view);
+                                            //delete = false;
+                                        }
+                                        if(maximize == true){
+                                            tv.setScaleX(tv.getScaleX()+.075f);
+                                            tv.setScaleY(tv.getScaleY()+.075f);
+                                        }
+                                        if(minimize == true){
+                                            tv.setScaleX(tv.getScaleX()-.075f);
+                                            tv.setScaleY(tv.getScaleY()-.075f);
+                                        }
+                                    }
+                                });
+                                //final String[] options = getResources().getStringArray(R.array.image_options);
+                                tv.setTypeface(typeGrandHotel);
+                                layout.addView(tv);
+                                break;
+
+
+
+                        }
+                    }
                 });
+
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -560,7 +756,6 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //screenshot part
     private void takeScreenShot(View view) {
-
         HideInterface(view);
         imageViewElements.setVisibility(view.INVISIBLE);
         //This is used to provide file name with Date a format
