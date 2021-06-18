@@ -51,7 +51,7 @@ import java.util.Date;
 public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
-    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground, imageViewElements;
+    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground, imageViewElements, imageViewEditTools;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize, btnScreenshot;
     ImageButton btnNextFragment;
     private Dialog dialog;
@@ -62,6 +62,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean maximize = false;
     private Boolean minimize = false;
     private Boolean showElements = true;
+    private Boolean minimizeEditTools = false;
     ConstraintLayout layout;
     private byte currentFragment;
 
@@ -76,6 +77,7 @@ public class Activity_Template1 extends AppCompatActivity {
         setContentView(R.layout.activity__template1);
 
         //Initialize variables
+        imageViewEditTools = findViewById(R.id.imgMinimizeEdits);
         imageViewElements = findViewById(R.id.imgElements);
         imageViewCreateText = findViewById(R.id.imgCreateText);
         imageViewCreateBubble2 = findViewById(R.id.imgCreateBubble2);
@@ -309,6 +311,28 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
                 else {
                     ResetMinimizeProperties();
+                }
+            }
+        });
+        //button created to minimize and how edit tools
+        imageViewEditTools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(minimizeEditTools == false){
+                    btnMinimize.setVisibility(view.INVISIBLE);
+                    btnMaximize.setVisibility(view.INVISIBLE);
+                    btnFlip.setVisibility(view.INVISIBLE);
+                    btnDeleteTxt.setVisibility(view.INVISIBLE);
+                    minimizeEditTools = true;
+                    imageViewEditTools.setBackground(getDrawable(R.drawable.arrowup_icon));
+                }
+                else{
+                    btnMinimize.setVisibility(view.VISIBLE);
+                    btnMaximize.setVisibility(view.VISIBLE);
+                    btnFlip.setVisibility(view.VISIBLE);
+                    btnDeleteTxt.setVisibility(view.VISIBLE);
+                    minimizeEditTools = false;
+                    imageViewEditTools.setBackground(getDrawable(R.drawable.arrowdown_icon));
                 }
             }
         });
