@@ -325,6 +325,11 @@ public class Activity_Template1 extends AppCompatActivity {
                     btnDeleteTxt.setVisibility(view.INVISIBLE);
                     minimizeEditTools = true;
                     imageViewEditTools.setBackground(getDrawable(R.drawable.arrowup_icon));
+                    //reset button values
+                    ResetFlipProperties();
+                    ResetMinimizeProperties();
+                    ResetMaximimizeProperties();
+                    ResetDeleteProperties();
                 }
                 else{
                     btnMinimize.setVisibility(view.VISIBLE);
@@ -594,6 +599,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private void HideInterface(View view){
         imageViewCreateBubble2.setVisibility(view.INVISIBLE);
         imageViewCreateText.setVisibility(view.INVISIBLE);
+        imageViewEditTools.setVisibility(view.INVISIBLE);
         btnScreenshot.setVisibility(view.INVISIBLE);
         btnMinimize.setVisibility(view.INVISIBLE);
         btnMaximize.setVisibility(view.INVISIBLE);
@@ -606,6 +612,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private void ShowInterface(View view){
         imageViewCreateBubble2.setVisibility(view.VISIBLE);
         imageViewCreateText.setVisibility(view.VISIBLE);
+        imageViewEditTools.setVisibility(view.VISIBLE);
         btnScreenshot.setVisibility(view.VISIBLE);
         btnMinimize.setVisibility(view.VISIBLE);
         btnMaximize.setVisibility(view.VISIBLE);
