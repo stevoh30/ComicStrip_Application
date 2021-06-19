@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -39,6 +40,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +59,7 @@ public class Activity_Template1 extends AppCompatActivity {
     private Dialog dialog;
     private Context context;
     private String m_Text = "";
+    Boolean fontChose = false;
     private Boolean delete = false;
     private Boolean flip = false;
     private Boolean maximize = false;
@@ -65,11 +68,12 @@ public class Activity_Template1 extends AppCompatActivity {
     private Boolean minimizeEditTools = false;
     ConstraintLayout layout;
     private byte currentFragment;
+    //font
+    private Typeface typeAlexBrush, typeChunkFive, typeGrandHotel, typeGreatVibes, typeKaushan, typeLato, typeOswald, typePacifico, typeWingSong, typeDefault;
 
     private TextView tv;
     int image_ID = 0;
     int tv_ID = 1000;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,17 @@ public class Activity_Template1 extends AppCompatActivity {
         layout = findViewById(R.id.myLayout);
         context = this;
         dialog = new Dialog(this);
+        //font
+        typeDefault= getResources().getFont(R.font.alexbrush_regular);
+        typeAlexBrush = getResources().getFont(R.font.alexbrush_regular);
+        typeChunkFive = getResources().getFont(R.font.chunkfive_print);
+        typeGrandHotel = getResources().getFont(R.font.grandhotel_regular);
+        typeGreatVibes = getResources().getFont(R.font.greatvibes_regular);
+        typeKaushan = getResources().getFont(R.font.kaushanscript_regular);
+        typeLato = getResources().getFont(R.font.lato_semibold);
+        typeOswald = getResources().getFont(R.font.oswald_heavy);
+        typePacifico = getResources().getFont(R.font.pacifico);
+        typeWingSong = getResources().getFont(R.font.windsong);
 
         //display fragment_one at the start of this activity
         if(savedInstanceState == null){
@@ -173,59 +188,16 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Insert Text to be Generated:");
+                if(fontChose == false) {
+                    OpenCreateTextDialogOption();
+                            OpenTextFontDialogOption();
 
-                // Set up the input
-                final EditText input = new EditText(context);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(input);
-                // Set up the buttons
-                //builder.setOnItemSelectedListener()
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        //create textview object using input dialog value
-                        m_Text = input.getText().toString();
-                        tv = new TextView(Activity_Template1.this);
-                        tv.setId(--tv_ID);
-                        tv.setText(m_Text);
-                        tv.setTextSize(18);
-                        tv.setTextColor(Color.BLACK);
-                        tv.setClickable(true);
-                        tv.setPadding(20, 10, 0, 0);
-                        tv.setGravity(Gravity.CENTER);
-                        tv.setOnTouchListener(new MyTouchListener1());
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                if(delete == true){
-                                    layout.removeView(view);
-                                    //delete = false;
-                                }
-                                if(maximize == true){
-                                    tv.setScaleX(tv.getScaleX()+.075f);
-                                    tv.setScaleY(tv.getScaleY()+.075f);
-                                }
-                                if(minimize == true){
-                                    tv.setScaleX(tv.getScaleX()-.075f);
-                                    tv.setScaleY(tv.getScaleY()-.075f);
-                                }
-                            }
-                        });
-
-                        layout.addView(tv);
                     }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+
+                    //OpenCreateTextDialogOption();
+                else{
+                    OpenCreateTextDialogOption();
+                }
             }
         });
         imageViewCreateBubble2.setOnClickListener(new View.OnClickListener() {
@@ -341,6 +313,128 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
+    }
+    //dialog box for choosing text font
+    private void OpenTextFontDialogOption(){
+        final String[] options = getResources().getStringArray(R.array.font_options);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Choose Text Font:").setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case 0:
+                        typeDefault = getResources().getFont(R.font.alexbrush_regular);
+                        fontChose=true;
+                        break;
+                    case 1:
+
+                        typeDefault = getResources().getFont(R.font.chunkfive_print);
+                        fontChose=true;
+                        break;
+                    case 2:
+
+                        typeDefault = getResources().getFont(R.font.grandhotel_regular);
+                        fontChose=true;
+                        break;
+                    case 3:
+
+                        typeDefault = getResources().getFont(R.font.greatvibes_regular);
+                        fontChose=true;
+                        break;
+                    case 4:
+
+                        typeDefault = getResources().getFont(R.font.kaushanscript_regular);
+                        fontChose=true;
+                        break;
+                    case 5:
+
+                        typeDefault = getResources().getFont(R.font.lato_semibold);
+                        fontChose=true;
+                        break;
+                    case 6:
+
+                        typeDefault = getResources().getFont(R.font.oswald_heavy);
+                        fontChose=true;
+                        break;
+                    case 7:
+
+                        typeDefault = getResources().getFont(R.font.pacifico);
+                        fontChose=true;
+                        break;
+                    case 8:
+
+                        typeDefault = getResources().getFont(R.font.windsong);
+                        fontChose=true;
+                        break;
+                }
+            }
+        });
+
+        builder.show();
+        //OpenCreateTextDialogOption();
+    }
+    //dialog box to create a text
+    private void OpenCreateTextDialogOption(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Insert Text to be Generated:");
+
+        // Set up the input
+        final EditText input = new EditText(context);
+        final String[] options = getResources().getStringArray(R.array.font_options);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+        // Set up the buttons
+        //builder.setOnItemSelectedListener()
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //reset the font
+                fontChose = false;
+                //create textview object using input dialog value
+                m_Text = input.getText().toString();
+                tv = new TextView(Activity_Template1.this);
+                tv.setId(--tv_ID);
+                tv.setText(m_Text);
+                tv.setTextSize(20);
+                tv.setTextColor(Color.BLACK);
+                tv.setClickable(true);
+                tv.setPadding(20, 10, 0, 0);
+                tv.setGravity(Gravity.CENTER);
+                tv.setOnTouchListener(new MyTouchListener1());
+                tv.setOnClickListener(new View.OnClickListener() {
+                    //tv.setTypeface(typeAlexBrush);
+                    @Override
+                    public void onClick(View view) {
+                        if(delete == true){
+                            layout.removeView(view);
+                            //delete = false;
+                        }
+                        if(maximize == true){
+                            tv.setScaleX(tv.getScaleX()+.075f);
+                            tv.setScaleY(tv.getScaleY()+.075f);
+                        }
+                        if(minimize == true){
+                            tv.setScaleX(tv.getScaleX()-.075f);
+                            tv.setScaleY(tv.getScaleY()-.075f);
+                        }
+                    }
+                });
+                //final String[] options = getResources().getStringArray(R.array.image_options);
+
+                tv.setTypeface(typeDefault);
+                layout.addView(tv);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
     // method that calls a dialog to give the users options for which chatboxes they would
     // like to generate
@@ -560,7 +654,6 @@ public class Activity_Template1 extends AppCompatActivity {
 
     //screenshot part
     private void takeScreenShot(View view) {
-
         HideInterface(view);
         imageViewElements.setVisibility(view.INVISIBLE);
         //This is used to provide file name with Date a format
