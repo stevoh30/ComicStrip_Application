@@ -7,17 +7,19 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnExitApp;
+    ImageView imgExitApp, imgStartComic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnExitApp = (Button) findViewById(R.id.btnCloseApplication);
+        imgExitApp = findViewById(R.id.imgCloseApplication);
+        imgStartComic = findViewById(R.id.imgCreateComic);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.gb);
-        btnExitApp.setOnClickListener(new View.OnClickListener() {
+        imgExitApp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -30,15 +32,19 @@ public class MainActivity extends AppCompatActivity {
                 //System.exit(0);
             }
         });
+        imgStartComic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenSelectTemplate(view);
+            }
+        });
     }
+
     public void OpenSelectTemplate(View v){
         //sound effect
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.fairysparkle);
         mp.start();
         Intent template1Intent = new Intent(this, Activity_Template1.class);
         startActivity(template1Intent);
-    }
-    public void CloseApplication(){
-
     }
 }

@@ -105,30 +105,20 @@ public class Activity_Template2 extends AppCompatActivity {
         btnBright.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lighten = true;
-                darken = false;
+                ToggleFilterSettingsLight();
             }
         });
         btnDarken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                darken = true;
-                lighten = false;
-            }
-        });
-        btnDarken.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                darken = true;
-                lighten = false;
+                ToggleFilterSettingsDark();
             }
         });
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 color = Color.WHITE;
-                darken = true;
-                lighten = false;
+                ToggleFilterSettingsDark();
                 imageEdit.setColorFilter(Color.WHITE, PorterDuff.Mode.DARKEN);
             }
         });
@@ -163,13 +153,25 @@ public class Activity_Template2 extends AppCompatActivity {
             }
         });
     }
+    private void ToggleFilterSettingsDark(){
+        darken = true;
+        btnDarken.setForeground(getDrawable(R.drawable.darkclick_icon));
+        lighten = false;
+        btnBright.setForeground(getDrawable(R.drawable.bright_icon));
+    }
+    private void ToggleFilterSettingsLight(){
+        darken = false;
+        btnDarken.setForeground(getDrawable(R.drawable.dark_icon));
+        lighten = true;
+        btnBright.setForeground(getDrawable(R.drawable.brightclick_icon));
+    }
     //Method to switch imageColor and change filters depending on selection
     private void SwitchImageColor(int c){
         if(lighten == true){
-            imageEdit.setColorFilter(color, PorterDuff.Mode.OVERLAY);
+            imageEdit.setColorFilter(c, PorterDuff.Mode.OVERLAY);
         }
         else if(darken == true) {
-            imageEdit.setColorFilter(color, PorterDuff.Mode.DARKEN);
+            imageEdit.setColorFilter(c, PorterDuff.Mode.DARKEN);
         }
     }
 
