@@ -42,10 +42,10 @@ public class Activity_Template2 extends AppCompatActivity {
 
 
     //private ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(50,50);
-    ImageView imageEdit;
-    Button btnSubmit, btnRed, btnGreen, btnBlue, btnCyan, btnYellow, btnBright, btnDarken, btnReset;
+    ImageView imageEdit, imageReset, imageConfirm;
+    Button btnRed, btnGreen, btnBlue, btnCyan, btnYellow, btnBright, btnDarken;
     int color;
-    Boolean lighten, darken, multiply, overlay;
+    Boolean lighten, darken;
 
 
     @Override
@@ -57,7 +57,6 @@ public class Activity_Template2 extends AppCompatActivity {
         darken = true;
 
         imageEdit = findViewById(R.id.imageViewEdit);
-        btnSubmit = findViewById(R.id.btnSubmitChanges);
         btnRed = findViewById(R.id.btnChangeRed);
         btnBlue = findViewById(R.id.btnChangeBlue);
         btnGreen = findViewById(R.id.btnChangeGreen);
@@ -65,7 +64,8 @@ public class Activity_Template2 extends AppCompatActivity {
         btnYellow = findViewById(R.id.btnChangeYellow);
         btnDarken = findViewById(R.id.btnChangeDarken);
         btnBright = findViewById(R.id.btnChangeBright);
-        btnReset = findViewById(R.id.btnReset);
+        imageReset = findViewById(R.id.imgReset);
+        imageConfirm = findViewById(R.id.imgConfirm);
 
         btnRed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +114,7 @@ public class Activity_Template2 extends AppCompatActivity {
                 ToggleFilterSettingsDark();
             }
         });
-        btnReset.setOnClickListener(new View.OnClickListener() {
+        imageReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 color = Color.WHITE;
@@ -134,7 +134,7 @@ public class Activity_Template2 extends AppCompatActivity {
         }
 
         //pass data back to fragment1
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        imageConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //variable to determine if image was darkened or lightened

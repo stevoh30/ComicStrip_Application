@@ -21,34 +21,6 @@
         app:srcCompat="@drawable/blank_image" />
 
     <Button
-        android:id="@+id/btnSubmitChanges"
-        android:layout_width="173dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#03A9F4"
-        android:text="Finish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangeCyan"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnReset"
-        android:layout_width="174dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#A19292"
-        android:text="Reset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangeBlue"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/btnChangeBlue"
         android:layout_width="52dp"
         android:layout_height="148dp"
@@ -114,12 +86,10 @@
         android:layout_height="53dp"
         android:foreground="@drawable/darkclick_icon"
         android:text="DARK"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitChanges"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangeBright"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintTop_toBottomOf="@+id/btnChangeBright" />
 
     <Button
         android:id="@+id/btnChangeBright"
@@ -127,11 +97,32 @@
         android:layout_height="53dp"
         android:foreground="@drawable/bright_icon"
         android:text="Brighten"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitChanges"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit" />
+
+    <ImageView
+        android:id="@+id/imgConfirm"
+        android:layout_width="187dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/imgReset"
+        app:layout_constraintTop_toBottomOf="@+id/btnChangeYellow"
+        app:layout_constraintVertical_bias="0.26"
+        app:srcCompat="@drawable/confirm_button" />
+
+    <ImageView
+        android:id="@+id/imgReset"
+        android:layout_width="187dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChangeBlue"
+        app:layout_constraintVertical_bias="0.26"
+        app:srcCompat="@drawable/reset_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
