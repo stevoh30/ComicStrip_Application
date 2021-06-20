@@ -330,12 +330,14 @@ public class Fragment_ImageLayout3 extends Fragment {
                     else {
                         imageView_Photo8.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
+                    break;
                 case 4:
                     if (light == false)
                         imageView_Photo9.setColorFilter(color, PorterDuff.Mode.DARKEN);
                     else {
                         imageView_Photo9.setColorFilter(color, PorterDuff.Mode.OVERLAY);
                     }
+                    break;
             }
         }
         //Check if the intent was to pick image, was successful and an image was picked

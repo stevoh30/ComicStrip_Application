@@ -96,7 +96,7 @@ public class Activity_Template1 extends AppCompatActivity {
         layout = findViewById(R.id.myLayout);
         context = this;
         dialog = new Dialog(this);
-        //font
+        //font resources
         typeDefault= getResources().getFont(R.font.alexbrush_regular);
         typeAlexBrush = getResources().getFont(R.font.alexbrush_regular);
         typeChunkFive = getResources().getFont(R.font.chunkfive_print);
