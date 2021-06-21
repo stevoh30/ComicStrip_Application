@@ -455,10 +455,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.dialog_box2);
                 //Creates ID and implements onTouchListener to the object
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(400);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -467,10 +464,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.dialog_bubble);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(400);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -479,14 +473,18 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.dialog_frame);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(400);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
         dialog.show();
+    }
+    public void CreateImageView(ImageView image){
+        GenerateImageView(image);
+        layout.addView(image);
+        image.setX(400);
+        image.setY(700);
+
     }
     public void OpenCreateGraphicOptions(){
         dialog.setContentView(R.layout.graphic_boxselection);
@@ -503,10 +501,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_lightningbolt);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(450);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -515,10 +510,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_oops2);
-                GenerateImageView(image);
-                image.setX(450);
-                image.setY(700);
-                layout.addView(image);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -527,10 +519,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_cool);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(450);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -539,10 +528,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_boom);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(450);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -551,10 +537,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_pow);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(450);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
@@ -563,10 +546,7 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_zap);
-                GenerateImageView(image);
-                layout.addView(image);
-                image.setX(450);
-                image.setY(700);
+                CreateImageView(image);
                 dialog.dismiss();
             }
         });
