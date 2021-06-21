@@ -395,6 +395,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 //create textview object using input dialog value
                 m_Text = input.getText().toString();
                 tv = new TextView(Activity_Template1.this);
+                tv.setX(450);
+                tv.setY(700);
                 tv.setId(--tv_ID);
                 tv.setText(m_Text);
                 tv.setTextSize(20);
@@ -455,6 +457,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 //Creates ID and implements onTouchListener to the object
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(400);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -465,6 +469,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.dialog_bubble);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(400);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -475,6 +481,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.dialog_frame);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(400);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -497,6 +505,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.graphic_lightningbolt);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(450);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -506,6 +516,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_oops2);
                 GenerateImageView(image);
+                image.setX(450);
+                image.setY(700);
                 layout.addView(image);
                 dialog.dismiss();
             }
@@ -517,6 +529,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.graphic_cool);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(450);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -527,6 +541,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.graphic_boom);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(450);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -537,6 +553,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.graphic_pow);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(450);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
@@ -547,6 +565,8 @@ public class Activity_Template1 extends AppCompatActivity {
                 image.setImageResource(R.drawable.graphic_zap);
                 GenerateImageView(image);
                 layout.addView(image);
+                image.setX(450);
+                image.setY(700);
                 dialog.dismiss();
             }
         });
