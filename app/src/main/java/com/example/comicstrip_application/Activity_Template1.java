@@ -123,7 +123,7 @@ public class Activity_Template1 extends AppCompatActivity {
             //commit
             ft.commit();
         }
-
+        //button hides interface elements
         imageViewElements.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +137,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
+        //button switches imageview layout fragment
         btnNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,18 +156,14 @@ public class Activity_Template1 extends AppCompatActivity {
                         ft.commit();
                         break;
                     case 2:
-                        //create the fragment object
                         Fragment_ImageLayout3 f3 = new Fragment_ImageLayout3();
-                        //replace fragment to this activity
                         ft.replace(R.id.frame1, f3, "FRAGMENT_THREE");
                         currentFragment = 3;
                         //commit
                         ft.commit();
                         break;
                     case 3:
-                        //create the fragment object
                         Fragment_ImageLayout1 f1 = new Fragment_ImageLayout1();
-                        //replace fragment to this activity
                         ft.replace(R.id.frame1, f1, "FRAGMENT_ONE");
                         currentFragment = 1;
                         //commit
@@ -175,6 +172,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
+        //button calls function to share image to social media platform
         verifyStoragePermission(Activity_Template1.this);
         btnScreenshot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,30 +180,28 @@ public class Activity_Template1 extends AppCompatActivity {
                 takeScreenShot(getWindow().getDecorView());
             }
         });
-
-
+        // button calls upon font selection during generate textview
         imageViewCreateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(fontChose == false) {
                     OpenCreateTextDialogOption();
-                            OpenTextFontDialogOption();
-
+                    OpenTextFontDialogOption();
                     }
-
-                    //OpenCreateTextDialogOption();
                 else{
                     OpenCreateTextDialogOption();
                 }
             }
         });
+        // button generates dialog to create dialog bubbles
         imageViewCreateBubble2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OpenCreateDialogOptions();
             }
         });
+        // button generates dialog to create image graphics
         imageViewCreateGraphics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +209,7 @@ public class Activity_Template1 extends AppCompatActivity {
             }
         });
         // Default background color
+        // button allows user to change background image/color
         layout.setBackground(getResources().getDrawable(R.drawable.background_red));
         imageViewChangeBackground.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,6 +217,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 OpenChangeBackgroundColorOption();
             }
         });
+        // button to delete generated objects
        btnDeleteTxt.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
@@ -236,6 +234,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
        });
+       // button to mirror generated objects
        btnFlip.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -252,6 +251,7 @@ public class Activity_Template1 extends AppCompatActivity {
                }
            }
         });
+       // button to increase object scale
        btnMaximize.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -268,6 +268,7 @@ public class Activity_Template1 extends AppCompatActivity {
                }
            }
        });
+       // button to decrease object scale
         btnMinimize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -286,7 +287,7 @@ public class Activity_Template1 extends AppCompatActivity {
                 }
             }
         });
-        //button created to minimize and how edit tools
+        //button created to minimize edit tool options by making them hidden
         imageViewEditTools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -371,7 +372,6 @@ public class Activity_Template1 extends AppCompatActivity {
         });
 
         builder.show();
-        //OpenCreateTextDialogOption();
     }
     //dialog box to create a text
     private void OpenCreateTextDialogOption(){
@@ -438,8 +438,7 @@ public class Activity_Template1 extends AppCompatActivity {
         });
         builder.show();
     }
-    // method that calls a dialog to give the users options for which chatboxes they would
-    // like to generate
+    // function to generate dialog boxes onto layout
     public void OpenCreateDialogOptions(){
         dialog.setContentView(R.layout.dialog_boxselection);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -479,13 +478,8 @@ public class Activity_Template1 extends AppCompatActivity {
         });
         dialog.show();
     }
-    public void CreateImageView(ImageView image){
-        GenerateImageView(image);
-        layout.addView(image);
-        image.setX(400);
-        image.setY(700);
 
-    }
+    // function to generate graphic objects onto layout
     public void OpenCreateGraphicOptions(){
         dialog.setContentView(R.layout.graphic_boxselection);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -552,6 +546,14 @@ public class Activity_Template1 extends AppCompatActivity {
         });
         dialog.show();
     }
+    // function to generate imageview and place on layout coordinates (center of layout)
+    public void CreateImageView(ImageView image){
+        GenerateImageView(image);
+        layout.addView(image);
+        image.setX(400);
+        image.setY(700);
+    }
+    // function that attaches onClick features to generated objects
     public void GenerateImageView(ImageView image){
         //increments id for every image created
         image.setId(++image_ID);
@@ -585,6 +587,7 @@ public class Activity_Template1 extends AppCompatActivity {
             image.setScaleY(image.getScaleY()-.075f);
         }
     }
+    // function to change background color/image
     public void OpenChangeBackgroundColorOption(){
         dialog.setContentView(R.layout.background_boxselection);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -650,9 +653,7 @@ public class Activity_Template1 extends AppCompatActivity {
 
         return flipped_bitmap;
     }
-
-
-    //screenshot part
+    //method used to save image in path and share on selected social media application
     private void takeScreenShot(View view) {
         HideInterface(view);
         imageViewElements.setVisibility(view.INVISIBLE);
@@ -667,13 +668,11 @@ public class Activity_Template1 extends AppCompatActivity {
             if (!mainDir.exists()) {
                 boolean mkdir = mainDir.mkdir();
             }
-
             //Providing file name along with Bitmap to capture screenview
             String path = mainDir + "/" + "ComicSrip" + "-" + format + ".jpeg";
             view.setDrawingCacheEnabled(true);
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
-
 
             //This logic is used to save file at given location with the given filename and compress the Image Quality.
             File imageFile = new File(path);
@@ -689,6 +688,7 @@ public class Activity_Template1 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    // function used to hide GUI elements
     private void HideInterface(View view){
         imageViewCreateBubble2.setVisibility(view.INVISIBLE);
         imageViewCreateText.setVisibility(view.INVISIBLE);

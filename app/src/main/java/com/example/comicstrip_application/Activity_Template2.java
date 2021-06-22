@@ -41,18 +41,18 @@ import android.widget.Toast;
 public class Activity_Template2 extends AppCompatActivity {
 
 
-    //private ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(50,50);
+    // declare variables
     ImageView imageEdit, imageReset, imageConfirm;
     Button btnRed, btnGreen, btnBlue, btnCyan, btnYellow, btnBright, btnDarken;
     int color;
     Boolean lighten, darken;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__template2);
 
+        // initialization
         lighten = false;
         darken = true;
 
@@ -67,6 +67,7 @@ public class Activity_Template2 extends AppCompatActivity {
         imageReset = findViewById(R.id.imgReset);
         imageConfirm = findViewById(R.id.imgConfirm);
 
+        // buttons to filter color of imageview ----------------------------------
         btnRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +115,7 @@ public class Activity_Template2 extends AppCompatActivity {
                 ToggleFilterSettingsDark();
             }
         });
+        // resets color of imageview to default
         imageReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,7 +125,7 @@ public class Activity_Template2 extends AppCompatActivity {
             }
         });
 
-        //collect data from fragment1 and set to imageview
+        //collect data from fragment1 and set file to imageview 
         Bundle extras = getIntent().getExtras();
         if (extras.containsKey("bitmap")) {
             Bitmap bitmap = extras.getParcelable("bitmap");
@@ -133,7 +135,7 @@ public class Activity_Template2 extends AppCompatActivity {
             imageEdit.setImageURI(uri);
         }
 
-        //pass data back to fragment1
+        //pass color properties back to fragment
         imageConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,6 +155,7 @@ public class Activity_Template2 extends AppCompatActivity {
             }
         });
     }
+    // image editor functions --------------------------------------------
     private void ToggleFilterSettingsDark(){
         darken = true;
         btnDarken.setForeground(getDrawable(R.drawable.darkclick_icon));
@@ -165,7 +168,7 @@ public class Activity_Template2 extends AppCompatActivity {
         lighten = true;
         btnBright.setForeground(getDrawable(R.drawable.brightclick_icon));
     }
-    //Method to switch imageColor and change filters depending on selection
+    // function to switch imageColor and change filters depending on selection
     private void SwitchImageColor(int c){
         if(lighten == true){
             imageEdit.setColorFilter(c, PorterDuff.Mode.OVERLAY);
