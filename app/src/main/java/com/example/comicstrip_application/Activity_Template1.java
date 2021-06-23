@@ -108,7 +108,7 @@ public class Activity_Template1 extends AppCompatActivity {
         typePacifico = getResources().getFont(R.font.pacifico);
         typeWingSong = getResources().getFont(R.font.windsong);
 
-        //display fragment_one at the start of this activity
+        //display fragment at the start of this activity
         if(savedInstanceState == null){
             //create a fragment manager
             FragmentManager fmgr = this.getSupportFragmentManager();
@@ -674,7 +674,7 @@ public class Activity_Template1 extends AppCompatActivity {
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
 
-            //This logic is used to save file at given location with the given filename and compress the Image Quality.
+            //save file at given location with the given filename and compress the Image Quality.
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
@@ -682,7 +682,7 @@ public class Activity_Template1 extends AppCompatActivity {
             fileOutputStream.close();
             ShowInterface(view);
             imageViewElements.setVisibility(view.VISIBLE);
-            //Create New Method to take ScreenShot with the imageFile.
+            //sharing the image.
             shareScreenShot(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
@@ -732,13 +732,15 @@ public class Activity_Template1 extends AppCompatActivity {
         intent.putExtra(android.content.Intent.EXTRA_TEXT, "ComicsTrip ScreenShot captor");
         intent.putExtra(Intent.EXTRA_STREAM, uri);
 
-        //It will show the application which are available to share Image; else Toast message will throw.
+        //this will provide the Sharing GUI.
+        //send message if it cannot find any app to share
         try {
             this.startActivity(Intent.createChooser(intent, "Share With"));
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, "No App Available", Toast.LENGTH_SHORT).show();
         }
     }
+
     private static final String[] PERMISSION_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
