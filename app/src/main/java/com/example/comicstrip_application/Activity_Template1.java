@@ -1,12 +1,9 @@
 package com.example.comicstrip_application;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,8 +12,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,11 +22,9 @@ import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.text.InputType;
 import android.text.format.DateFormat;
 import android.view.Gravity;
@@ -40,7 +33,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +45,7 @@ import java.util.Date;
 public class Activity_Template1 extends AppCompatActivity {
 
     //Declare variables
-    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground, imageViewElements, imageViewEditTools;
+    private ImageView imageViewCreateText, imageViewCreateBubble2, imageViewCreateGraphics, imageViewChangeBackground, imageViewElements, imageViewEditTools, imageViewCreateGraphics2;
     private Button btnFlip, btnDeleteTxt, btnMaximize, btnMinimize, btnScreenshot;
     ImageButton btnNextFragment;
     private Dialog dialog;
@@ -86,6 +78,7 @@ public class Activity_Template1 extends AppCompatActivity {
         imageViewCreateText = findViewById(R.id.imgCreateText);
         imageViewCreateBubble2 = findViewById(R.id.imgCreateBubble2);
         imageViewCreateGraphics = findViewById(R.id.imgCreateGraphics);
+        imageViewCreateGraphics2 = findViewById(R.id.imgCreateGraphics2);
         imageViewChangeBackground = findViewById(R.id.imgCreateBackground);
         btnDeleteTxt = findViewById(R.id.btnDelete);
         btnFlip = findViewById(R.id.btnFlipImage);
@@ -206,6 +199,13 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 OpenCreateGraphicOptions();
+            }
+        });
+        // button generates dialog to create image graphics2
+        imageViewCreateGraphics2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenCreateGraphicOptions2();
             }
         });
         // Default background color
@@ -483,18 +483,18 @@ public class Activity_Template1 extends AppCompatActivity {
     public void OpenCreateGraphicOptions(){
         dialog.setContentView(R.layout.graphic_boxselection);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-        ImageView imageCreateLightning = dialog.findViewById(R.id.imgCreateGraphic_Lightning);
+        ImageView imageCreateLike = dialog.findViewById(R.id.CreateGraphic_Like);
         ImageView imageCreateOops = dialog.findViewById(R.id.imgCreateGraphic_Oops);
         ImageView imageCreateCool = dialog.findViewById(R.id.imgCreateGraphic_Cool);
         ImageView imageCreateBoom = dialog.findViewById(R.id.imgCreateGraphic_Boom);
         ImageView imageCreatePow = dialog.findViewById(R.id.imgCreateGraphic_Pow);
         ImageView imageCreateZap = dialog.findViewById(R.id.imgCreateGraphic_Zap);
 
-        imageCreateLightning.setOnClickListener(new View.OnClickListener() {
+        imageCreateLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
-                image.setImageResource(R.drawable.graphic_lightningbolt);
+                image.setImageResource(R.drawable.graphic_like);
                 CreateImageView(image);
                 dialog.dismiss();
             }
@@ -503,7 +503,7 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
-                image.setImageResource(R.drawable.graphic_oops2);
+                image.setImageResource(R.drawable.graphic_oops);
                 CreateImageView(image);
                 dialog.dismiss();
             }
@@ -540,6 +540,102 @@ public class Activity_Template1 extends AppCompatActivity {
             public void onClick(View view) {
                 ImageView image = new ImageView(context);
                 image.setImageResource(R.drawable.graphic_zap);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+    public void OpenCreateGraphicOptions2() {
+        dialog.setContentView(R.layout.graphic2_boxselection);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        ImageView imageCreateEye = dialog.findViewById(R.id.CreateGraphic_Eye);
+        ImageView imageCreateGlasses = dialog.findViewById(R.id.imgCreateGraphic_Glasses);
+        ImageView imageCreateMoustache = dialog.findViewById(R.id.imgCreateGraphic_Moustache);
+        ImageView imageCreateLightning = dialog.findViewById(R.id.imgCreateGraphic_Lightning);
+        ImageView imageCreateCloud = dialog.findViewById(R.id.imgCreateGraphic_Cloud);
+        ImageView imageCreateBanana = dialog.findViewById(R.id.imgCreateGraphic_Banana);
+        ImageView imageCreateBone = dialog.findViewById(R.id.imgCreateGraphic_Bone);
+        ImageView imageCreateBow = dialog.findViewById(R.id.imgCreateGraphic_Bow);
+        ImageView imageCreateNote = dialog.findViewById(R.id.imgCreateGraphic_Note);
+
+        imageCreateEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_eyeballs);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateGlasses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_glasses);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateMoustache.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_moustache);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateLightning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_lightningbolt);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateCloud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_cloud);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateBanana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_banana);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateBone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_bone);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateBow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_bow);
+                CreateImageView(image);
+                dialog.dismiss();
+            }
+        });
+        imageCreateNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView image = new ImageView(context);
+                image.setImageResource(R.drawable.graphic_notes);
                 CreateImageView(image);
                 dialog.dismiss();
             }
@@ -594,6 +690,9 @@ public class Activity_Template1 extends AppCompatActivity {
         ImageView imageBackgroundRed = dialog.findViewById(R.id.imgBackgroundRed);
         ImageView imageBackgroundViolet = dialog.findViewById(R.id.imgBackgroundViolet);
         ImageView imageBackgroundTeal = dialog.findViewById(R.id.imgBackgroundTeal);
+        ImageView imageBackgroundDesignPet = dialog.findViewById(R.id.imgBackgroundDesign1);
+        ImageView imageBackgroundDesign1 = dialog.findViewById(R.id.imgBackgroundDesign2);
+        ImageView imageBackgroundDesign2 = dialog.findViewById(R.id.imgBackgroundDesign3);
         imageBackgroundRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -612,6 +711,27 @@ public class Activity_Template1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layout.setBackground(getResources().getDrawable(R.drawable.background_teal));
+                dialog.dismiss();
+            }
+        });
+        imageBackgroundDesignPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_pet2));
+                dialog.dismiss();
+            }
+        });
+        imageBackgroundDesign1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_design1));
+                dialog.dismiss();
+            }
+        });
+        imageBackgroundDesign2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layout.setBackground(getResources().getDrawable(R.drawable.background_design2));
                 dialog.dismiss();
             }
         });
@@ -700,6 +820,7 @@ public class Activity_Template1 extends AppCompatActivity {
         btnDeleteTxt.setVisibility(view.INVISIBLE);
         imageViewChangeBackground.setVisibility(view.INVISIBLE);
         imageViewCreateGraphics.setVisibility(view.INVISIBLE);
+        imageViewCreateGraphics2.setVisibility(view.INVISIBLE);
         btnNextFragment.setVisibility(view.INVISIBLE);
     }
     private void ShowInterface(View view){
@@ -712,6 +833,7 @@ public class Activity_Template1 extends AppCompatActivity {
         btnFlip.setVisibility(view.VISIBLE);
         btnDeleteTxt.setVisibility(view.VISIBLE);
         imageViewCreateGraphics.setVisibility(view.VISIBLE);
+        imageViewCreateGraphics2.setVisibility(view.VISIBLE);
         imageViewChangeBackground.setVisibility(view.VISIBLE);
         btnNextFragment.setVisibility(view.VISIBLE);
     }

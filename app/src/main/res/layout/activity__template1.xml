@@ -13,22 +13,23 @@
         android:id="@+id/btnShare"
         android:layout_width="43dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
         android:foreground="@drawable/share_icon"
         android:shadowColor="@color/black"
         android:text="Share"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <FrameLayout
         android:id="@+id/frame1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="60dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,31 +40,18 @@
 
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imgCreateBackground"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="8dp"
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/delete_icon"
+        android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCreateGraphics"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/background_icon" />
-
-    <ImageView
-        android:id="@+id/imgCreateGraphics"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCreateBubble2"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/generategraphics_icon" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
 
     <ImageView
         android:id="@+id/imgCreateText"
@@ -72,10 +60,10 @@
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.001"
         app:srcCompat="@drawable/generatetext_icon" />
 
     <ImageView
@@ -85,11 +73,49 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCreateText"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/generatebubble_icon" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphics"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCreateBubble2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/generategraphic_pow" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphics2"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCreateGraphics"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/generategraphics_icon" />
+
+    <ImageView
+        android:id="@+id/imgCreateBackground"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCreateGraphics2"
+        app:layout_constraintVertical_bias="0.021"
+        app:srcCompat="@drawable/background_icon" />
 
     <Button
         android:id="@+id/btnLarge"
@@ -99,10 +125,10 @@
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.73" />
 
     <Button
         android:id="@+id/btnMinimize"
@@ -112,10 +138,10 @@
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.801" />
 
     <Button
         android:id="@+id/btnFlipImage"
@@ -125,23 +151,10 @@
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="44dp"
-        android:layout_height="40dp"
-        android:foreground="@drawable/delete_icon"
-        android:text="+"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.876" />
 
     <ImageButton
         android:id="@+id/imgNextFragment"
@@ -150,16 +163,17 @@
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457"
+        app:layout_constraintVertical_bias="0.473"
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <ImageButton
         android:id="@+id/imgElements"
         android:layout_width="31dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/hide_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,12 +186,13 @@
         android:id="@+id/imgMinimizeEdits"
         android:layout_width="29dp"
         android:layout_height="19dp"
+        android:layout_marginStart="4dp"
         android:background="@drawable/arrowdown_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDelete"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintVertical_bias="0.625" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/layout_border"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Cloud"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/generategraphic_cloud" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Bow"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Cloud"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toEndOf="@+id/CreateGraphic_Eye"
+        app:srcCompat="@drawable/generategraphic_bow" />
+
+    <ImageView
+        android:id="@+id/CreateGraphic_Eye"
+        android:layout_width="76dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.864"
+        app:srcCompat="@drawable/generategraphic_eyes" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Lightning"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Bow"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Note"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/generategraphic_lightning" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Glasses"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Moustache"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Bone"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.09"
+        app:srcCompat="@drawable/generategraphic_glasses" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Moustache"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/CreateGraphic_Eye"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Lightning"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/generategraphic_moustache" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Banana"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Note"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/generategraphic_banana" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Bone"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Lightning"
+        app:layout_constraintEnd_toStartOf="@+id/imgCreateGraphic_Banana"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/generategraphic_bone" />
+
+    <ImageView
+        android:id="@+id/imgCreateGraphic_Note"
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Cloud"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/generategraphic_notes" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/oswald_heavy"
+        android:text="Generate Graphic"
+        android:textColor="#526A93"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCreateGraphic_Moustache"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

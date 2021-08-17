@@ -12,59 +12,107 @@
         android:id="@+id/imgBackgroundViolet"
         android:layout_width="94dp"
         android:layout_height="150dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.005"
         app:srcCompat="@drawable/background_violet" />
 
     <ImageView
         android:id="@+id/imgBackgroundTeal"
         android:layout_width="94dp"
         android:layout_height="150dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/imgBackgroundViolet"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.005"
         app:srcCompat="@drawable/background_teal" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imgBackgroundDesign2"
+        android:layout_width="94dp"
+        android:layout_height="150dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgBackgroundDesign3"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackgroundRed"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/background_design1" />
 
-        android:text="Change Background Color"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/imgBackgroundDesign3"
+        android:layout_width="94dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBackgroundRed"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/background_design2" />
 
     <ImageView
         android:id="@+id/imgBackgroundRed"
         android:layout_width="94dp"
         android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintEnd_toStartOf="@+id/imgBackgroundViolet"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background_red" />
+
+    <ImageView
+        android:id="@+id/imgBackgroundDesign1"
+        android:layout_width="94dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgBackgroundDesign2"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackgroundRed"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/background_pet" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:layout_marginBottom="150dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/oswald_heavy"
+        android:foregroundTint="#FFFFFF"
+        android:text="Change Background Color"
+        android:textColor="#526A93"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
