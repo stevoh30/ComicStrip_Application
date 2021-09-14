@@ -1,0 +1,9 @@
+Android Features
+- Additional Templates
+- Additional Background Images
+- Additional Colors/Filtering Options
+- Add Additional Graphics/Split (additional button)
+
+- Fix Font Menu
+- Fix Saving Option/Screenshot
+- Easier Text
